@@ -1,0 +1,7 @@
+# Needed only to regenerate results from the models themselves, which means the probe
+# scripts, the melting-law measurements and the tiny model training.
+-r requirements.txt
+torch==2.14.0
+transformers==5.16.1
+tokenizers==0.23.2
+huggingface-hub==1.30.0
