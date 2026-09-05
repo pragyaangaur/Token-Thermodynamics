@@ -1,0 +1,2295 @@
+{
+  "head" : {
+    "vars" : [ "cLabel", "capLabel" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Canada"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ottawa"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Japan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tokyo"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Norway"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oslo"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ireland"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dublin"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hungary"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Budapest"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spain"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madrid"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Washington, D.C."
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belgium"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brussels"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luxembourg"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luxembourg"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Finland"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Helsinki"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sweden"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Stockholm"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Poland"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Warsaw"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lithuania"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vilnius"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Italy"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rome"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Switzerland"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bern"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Austria"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vienna"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Greece"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Athens"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Turkey"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ankara"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Portugal"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lisbon"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Uruguay"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Montevideo"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Egypt"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cairo"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mexico"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mexico City"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kenya"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nairobi"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ethiopia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Addis Ababa"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ghana"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Accra"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "France"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paris"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United Kingdom"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "London"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "People's Republic of China"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beijing"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brazil"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brasília"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Moscow"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Germany"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Berlin"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belarus"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Minsk"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iceland"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Reykjavík"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Estonia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tallinn"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Latvia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Riga"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ukraine"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kyiv"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Czech Republic"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Prague"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Slovakia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bratislava"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Slovenia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ljubljana"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Moldova"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chișinău"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Romania"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bucharest"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bulgaria"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sofia"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "North Macedonia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Skopje"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Albania"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tirana"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Croatia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zagreb"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bosnia and Herzegovina"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sarajevo"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Azerbaijan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Baku"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Andorra"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Andorra la Vella"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cyprus"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nicosia"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Georgia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tbilisi"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazakhstan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Astana"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malta"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Valletta"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Monaco"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Monaco"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Montenegro"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Podgorica"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San Marino"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San Marino"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cuba"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Havana"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belize"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belmopan"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Barbados"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bridgetown"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indonesia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jakarta"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Africa"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pretoria"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Africa"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cape Town"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Africa"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bloemfontein"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Algeria"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Algiers"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Uzbekistan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tashkent"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chile"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Santiago"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Singapore"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Singapore"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Liechtenstein"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vaduz"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bahrain"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Manama"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Armenia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yerevan"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Serbia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belgrade"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Australia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Canberra"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Argentina"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Buenos Aires"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Peru"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lima"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "North Korea"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pyongyang"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cambodia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phnom Penh"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Timor-Leste"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dili"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chad"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "N'Djamena"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New Zealand"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wellington"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "India"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New Delhi"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tuvalu"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Funafuti"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tonga"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nukuʻalofa"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Samoa"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Apia"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Solomon Islands"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Honiara"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vanuatu"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Port Vila"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Papua New Guinea"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Port Moresby"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Palau"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ngerulmud"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nauru"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yaren District"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Federated States of Micronesia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Palikir"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Marshall Islands"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Majuro"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kiribati"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Tarawa"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mongolia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ulaanbaatar"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Fiji"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Suva"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Venezuela"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caracas"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Suriname"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paramaribo"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paraguay"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Asunción"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guyana"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Georgetown"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ecuador"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Quito"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Colombia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bogotá"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bolivia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "La Paz"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bolivia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sucre"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Trinidad and Tobago"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Port of Spain"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint Vincent and the Grenadines"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingstown"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint Lucia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Castries"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Polish–Lithuanian Commonwealth"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kraków"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Palestine"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ramallah"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Palestine"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "East Jerusalem"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingdom of Denmark"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Copenhagen"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Serbian Despotate"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belgrade"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint Kitts and Nevis"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Basseterre"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jamaica"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingston"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Grenada"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St. George's"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guatemala"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guatemala City"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Bahamas"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nassau"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Antigua and Barbuda"
+      },
+      "capLabel" : {
+        "type" : "literal",
+        "value" : "Q36262"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Honduras"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tegucigalpa"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dominica"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roseau"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dominican Republic"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Santo Domingo"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Haiti"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Port-au-Prince"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "El Salvador"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San Salvador"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iran"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tehran"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iraq"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Baghdad"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Costa Rica"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San José"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Israel"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jerusalem"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Panama"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Panama City"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yemen"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sanaa"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yemen"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Aden"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jordan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Amman"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nicaragua"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Managua"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kyrgyzstan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bishkek"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kuwait"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kuwait City"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Laos"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vientiane"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lebanon"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beirut"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maldives"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malé"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malaysia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kuala Lumpur"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Myanmar"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Naypyidaw"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nepal"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kathmandu"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oman"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Muscat"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pakistan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Islamabad"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qatar"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Doha"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saudi Arabia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Riyadh"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sri Lanka"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Colombo"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sri Lanka"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sri Jayawardenepura Kotte"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Syria"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Damascus"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tajikistan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dushanbe"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Taiwan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Taipei"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Thailand"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangkok"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Turkmenistan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ashgabat"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United Arab Emirates"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Abu Dhabi"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vietnam"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hanoi"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Korea"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Seoul"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Afghanistan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kabul"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangladesh"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dhaka"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mali"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bamako"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Angola"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luanda"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bhutan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Thimphu"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brunei"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bandar Seri Begawan"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tanzania"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dodoma"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Philippines"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Manila"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Central African Republic"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangui"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Togo"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lomé"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tunisia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tunis"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zambia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lusaka"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Harare"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Sudan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Juba"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Benin"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Porto-Novo"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Botswana"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gaborone"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Burkina Faso"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ouagadougou"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Burundi"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gitega"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Comoros"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Moroni"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Republic of the Congo"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brazzaville"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Democratic Republic of the Congo"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kinshasa"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Djibouti"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Djibouti"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Equatorial Guinea"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ciudad de la Paz"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eritrea"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Asmara"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gabon"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Libreville"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Gambia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Banjul"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guinea"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Conakry"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guinea-Bissau"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bissau"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ivory Coast"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yamoussoukro"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cameroon"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yaoundé"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cape Verde"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Praia"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lesotho"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maseru"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Liberia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Monrovia"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Libya"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tripoli"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madagascar"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Antananarivo"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malawi"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lilongwe"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mauritania"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nouakchott"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mauritius"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Port Louis"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Morocco"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rabat"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mozambique"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maputo"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Namibia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Windhoek"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Niger"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Niamey"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nigeria"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Abuja"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Uganda"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kampala"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rwanda"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kigali"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "São Tomé and Príncipe"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "São Tomé"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Senegal"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dakar"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Seychelles"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Victoria"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sierra Leone"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Freetown"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Somalia"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mogadishu"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sudan"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Khartoum"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eswatini"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mbabane"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eswatini"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lobamba"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kosovo"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pristina"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingdom of the Netherlands"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Amsterdam"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russian Empire"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint Petersburg"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Polish–Lithuanian Commonwealth"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vilnius"
+      }
+    }, {
+      "cLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Polish–Lithuanian Commonwealth"
+      },
+      "capLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Warsaw"
+      }
+    } ]
+  }
+}
