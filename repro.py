@@ -84,7 +84,8 @@ def main():
           f"CV {plain.std()/plain.mean():.4f}  spread {plain.max()/plain.min():.2f}x")
     print(f"  T x*/Delta   (with log V)    : mean {with_v.mean():.4f}  "
           f"CV {with_v.std()/with_v.mean():.4f}  spread {with_v.max()/with_v.min():.2f}x")
-    print(f"  scatter reduced by {100 * (1 - (with_v.std()/with_v.mean()) / (plain.std()/plain.mean())):.0f}%")
+    reduction = 1 - (with_v.std()/with_v.mean()) / (plain.std()/plain.mean())
+    print(f"  scatter reduced by {100 * reduction:.0f}%")
     print(f"  r(T_melt, Delta)             : {pearsonr(t_arr, d_arr).statistic:+.4f}")
     print(f"  r(T_melt, Delta/x*)          : {pearsonr(t_arr, d_arr / x_arr).statistic:+.4f}")
 
@@ -100,6 +101,14 @@ def main():
           f"95% CI [{lo:+.4f}, {hi:+.4f}]  {verdict}")
 
     print("\nExpected: scatter reduced by 58%, r rises from +0.34 to +0.79, CI [-0.269, -0.082].")
+
+    # Make the CI job a check, not merely a table printer.
+    if len(rows) != 12:
+        raise AssertionError(f"expected 12 model rows, found {len(rows)}")
+    if reduction < 0.50:
+        raise AssertionError(f"vocabulary correction reduced scatter by only {reduction:.1%}")
+    if hi >= 0:
+        raise AssertionError(f"bootstrap interval crosses zero: [{lo:+.4f}, {hi:+.4f}]")
 
 
 if __name__ == "__main__":
