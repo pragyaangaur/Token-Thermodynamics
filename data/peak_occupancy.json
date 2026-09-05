@@ -1,0 +1,933 @@
+[
+  {
+    "model": "gpt2",
+    "V": 50257,
+    "xstar": 11.18636804097489,
+    "ideal_p_top_at_melt": 0.5893945198599821,
+    "ideal_C_max": 30.283707487036093,
+    "measured_p_top_median": 0.09720985336300543,
+    "measured_p_top_mean": 0.1232002565625731,
+    "measured_p_top_q25": 0.06565379999227082,
+    "measured_p_top_q75": 0.19475496571101472,
+    "rows": [
+      {
+        "prompt": "The capital city of France is",
+        "T_melt": 0.9903129597249484,
+        "C_max": 7.080212872393476,
+        "p_top_at_melt": 0.08682005630058295
+      },
+      {
+        "prompt": "The chemical symbol for gold is",
+        "T_melt": 0.920243042540929,
+        "C_max": 11.005083744692579,
+        "p_top_at_melt": 0.301793999713895
+      },
+      {
+        "prompt": "In a shocking turn of events, the mayor announced that",
+        "T_melt": 1.0399658436574877,
+        "C_max": 12.832544668939814,
+        "p_top_at_melt": 0.20388532226922962
+      },
+      {
+        "prompt": "The main advantage of this approach is that it",
+        "T_melt": 1.296071124980151,
+        "C_max": 5.665012908625981,
+        "p_top_at_melt": 0.06230849250956766
+      },
+      {
+        "prompt": "She opened the door and saw",
+        "T_melt": 0.9663827204400272,
+        "C_max": 10.617709640126403,
+        "p_top_at_melt": 0.18709257829086295
+      },
+      {
+        "prompt": "Water freezes at a temperature of",
+        "T_melt": 1.7812784794087098,
+        "C_max": 5.446200463323653,
+        "p_top_at_melt": 0.015277822068553182
+      },
+      {
+        "prompt": "My favourite thing about the summer is",
+        "T_melt": 1.296071124980151,
+        "C_max": 10.104572680508797,
+        "p_top_at_melt": 0.10517295807343112
+      },
+      {
+        "prompt": "The largest planet in our solar system is",
+        "T_melt": 1.1191517947276344,
+        "C_max": 6.126441720144779,
+        "p_top_at_melt": 0.06591130315480374
+      },
+      {
+        "prompt": "He picked up the phone and said",
+        "T_melt": 1.3947576590735817,
+        "C_max": 12.98586784243756,
+        "p_top_at_melt": 0.2018245347358353
+      },
+      {
+        "prompt": "The first step in the process is to",
+        "T_melt": 0.8143029528418765,
+        "C_max": 4.321807121958934,
+        "p_top_at_melt": 0.08584148896874237
+      },
+      {
+        "prompt": "Scientists have discovered that the",
+        "T_melt": 0.6071644431101203,
+        "C_max": 5.413680086771297,
+        "p_top_at_melt": 0.08924674865257974
+      },
+      {
+        "prompt": "According to the report published last year, the company",
+        "T_melt": 1.065718199282738,
+        "C_max": 7.237168682225826,
+        "p_top_at_melt": 0.10725776448576738
+      },
+      {
+        "prompt": "The difference between the two methods is that",
+        "T_melt": 1.0399658436574877,
+        "C_max": 12.34325889662028,
+        "p_top_at_melt": 0.21156610061934963
+      },
+      {
+        "prompt": "It was raining when they arrived at the",
+        "T_melt": 0.8980059951590544,
+        "C_max": 7.223801405783704,
+        "p_top_at_melt": 0.06488129050467203
+      },
+      {
+        "prompt": "The book was written by",
+        "T_melt": 0.6533956671227865,
+        "C_max": 7.257019469395534,
+        "p_top_at_melt": 0.22849917962251834
+      },
+      {
+        "prompt": "One reason people prefer this is that",
+        "T_melt": 1.1191517947276344,
+        "C_max": 13.224983609726143,
+        "p_top_at_melt": 0.1923984427027412
+      },
+      {
+        "prompt": "After the war ended, the government began to",
+        "T_melt": 0.5781755433250219,
+        "C_max": 3.115368124868233,
+        "p_top_at_melt": 0.0691680000865832
+      },
+      {
+        "prompt": "The temperature outside was about",
+        "T_melt": 1.8705892500303283,
+        "C_max": 5.681067890479951,
+        "p_top_at_melt": 0.010114558900793444
+      },
+      {
+        "prompt": "In order to solve this problem, you need to",
+        "T_melt": 0.9430307391154915,
+        "C_max": 4.9747309959390575,
+        "p_top_at_melt": 0.11176192627582328
+      },
+      {
+        "prompt": "The cat sat on the",
+        "T_melt": 1.065718199282738,
+        "C_max": 7.182712287934421,
+        "p_top_at_melt": 0.06318256331512995
+      }
+    ]
+  },
+  {
+    "model": "EleutherAI/pythia-160m",
+    "V": 50304,
+    "xstar": 11.18727291951345,
+    "ideal_p_top_at_melt": 0.5893872892164582,
+    "ideal_C_max": 30.28876884391975,
+    "measured_p_top_median": 0.10647135424136756,
+    "measured_p_top_mean": 0.13431450350049273,
+    "measured_p_top_q25": 0.04053922862739292,
+    "measured_p_top_q75": 0.17498177690500913,
+    "rows": [
+      {
+        "prompt": "The capital city of France is",
+        "T_melt": 0.9903129597249484,
+        "C_max": 8.49011380049797,
+        "p_top_at_melt": 0.10588108841438938
+      },
+      {
+        "prompt": "The chemical symbol for gold is",
+        "T_melt": 0.8551309452520862,
+        "C_max": 9.520937973238343,
+        "p_top_at_melt": 0.2649460819784778
+      },
+      {
+        "prompt": "In a shocking turn of events, the mayor announced that",
+        "T_melt": 1.092108252601901,
+        "C_max": 14.348267645279526,
+        "p_top_at_melt": 0.27031531188673785
+      },
+      {
+        "prompt": "The main advantage of this approach is that it",
+        "T_melt": 1.2341905646430655,
+        "C_max": 7.657825048250556,
+        "p_top_at_melt": 0.1032334030217368
+      },
+      {
+        "prompt": "She opened the door and saw",
+        "T_melt": 1.0399658436574877,
+        "C_max": 11.006075972139229,
+        "p_top_at_melt": 0.1650739900348349
+      },
+      {
+        "prompt": "Water freezes at a temperature of",
+        "T_melt": 1.4646888252568817,
+        "C_max": 6.1728573326241705,
+        "p_top_at_melt": 0.036922178889812494
+      },
+      {
+        "prompt": "My favourite thing about the summer is",
+        "T_melt": 1.0399658436574877,
+        "C_max": 9.91286293202937,
+        "p_top_at_melt": 0.17230355885635268
+      },
+      {
+        "prompt": "The largest planet in our solar system is",
+        "T_melt": 1.0399658436574877,
+        "C_max": 7.9429666566075765,
+        "p_top_at_melt": 0.14431277786391228
+      },
+      {
+        "prompt": "He picked up the phone and said",
+        "T_melt": 1.296071124980151,
+        "C_max": 15.691039647033719,
+        "p_top_at_melt": 0.35333308313436756
+      },
+      {
+        "prompt": "The first step in the process is to",
+        "T_melt": 1.2043671888656715,
+        "C_max": 5.286508327169008,
+        "p_top_at_melt": 0.028242732845071342
+      },
+      {
+        "prompt": "Scientists have discovered that the",
+        "T_melt": 0.7031470677498164,
+        "C_max": 4.742666290664116,
+        "p_top_at_melt": 0.028068804157386253
+      },
+      {
+        "prompt": "According to the report published last year, the company",
+        "T_melt": 1.1191517947276344,
+        "C_max": 8.81824992543666,
+        "p_top_at_melt": 0.10447275724255
+      },
+      {
+        "prompt": "The difference between the two methods is that",
+        "T_melt": 1.0148357761949953,
+        "C_max": 13.222577208205772,
+        "p_top_at_melt": 0.2863590770342775
+      },
+      {
+        "prompt": "It was raining when they arrived at the",
+        "T_melt": 0.8763062909065539,
+        "C_max": 6.91060616303344,
+        "p_top_at_melt": 0.10119864997965429
+      },
+      {
+        "prompt": "The book was written by",
+        "T_melt": 0.8344672874266785,
+        "C_max": 9.12787752106737,
+        "p_top_at_melt": 0.18301643105097845
+      },
+      {
+        "prompt": "One reason people prefer this is that",
+        "T_melt": 1.1468650078030775,
+        "C_max": 12.47679119852116,
+        "p_top_at_melt": 0.1610679584422336
+      },
+      {
+        "prompt": "After the war ended, the government began to",
+        "T_melt": 1.264752447539369,
+        "C_max": 3.8616527221832047,
+        "p_top_at_melt": 0.014550405054707649
+      },
+      {
+        "prompt": "The temperature outside was about",
+        "T_melt": 1.576214389636841,
+        "C_max": 6.198509676567092,
+        "p_top_at_melt": 0.01418524818077495
+      },
+      {
+        "prompt": "In order to solve this problem, you need to",
+        "T_melt": 1.264752447539369,
+        "C_max": 5.64933995461626,
+        "p_top_at_melt": 0.04174491187325306
+      },
+      {
+        "prompt": "The cat sat on the",
+        "T_melt": 0.9430307391154915,
+        "C_max": 7.915690426266364,
+        "p_top_at_melt": 0.10706162006834574
+      }
+    ]
+  },
+  {
+    "model": "HuggingFaceTB/SmolLM2-360M",
+    "V": 49152,
+    "xstar": 11.164847774770124,
+    "ideal_p_top_at_melt": 0.5895668279741135,
+    "ideal_C_max": 30.163456458447346,
+    "measured_p_top_median": 0.17505463446683894,
+    "measured_p_top_mean": 0.17604068444829274,
+    "measured_p_top_q25": 0.08949473215532376,
+    "measured_p_top_q75": 0.22284973738985267,
+    "rows": [
+      {
+        "prompt": "The capital city of France is",
+        "T_melt": 1.361054288640686,
+        "C_max": 10.602162041336635,
+        "p_top_at_melt": 0.2119320142885161
+      },
+      {
+        "prompt": "The chemical symbol for gold is",
+        "T_melt": 1.500958465974782,
+        "C_max": 14.95909267405439,
+        "p_top_at_melt": 0.42334785612989884
+      },
+      {
+        "prompt": "In a shocking turn of events, the mayor announced that",
+        "T_melt": 1.092108252601901,
+        "C_max": 13.041539293852718,
+        "p_top_at_melt": 0.1970005844508361
+      },
+      {
+        "prompt": "The main advantage of this approach is that it",
+        "T_melt": 1.328165337236895,
+        "C_max": 6.464227858855614,
+        "p_top_at_melt": 0.08320290820402663
+      },
+      {
+        "prompt": "She opened the door and saw",
+        "T_melt": 1.092108252601901,
+        "C_max": 9.815911741955018,
+        "p_top_at_melt": 0.14147402683787721
+      },
+      {
+        "prompt": "Water freezes at a temperature of",
+        "T_melt": 1.500958465974782,
+        "C_max": 11.284495039259797,
+        "p_top_at_melt": 0.1729102086508931
+      },
+      {
+        "prompt": "My favourite thing about the summer is",
+        "T_melt": 1.2341905646430655,
+        "C_max": 9.847800196524313,
+        "p_top_at_melt": 0.13408327703018857
+      },
+      {
+        "prompt": "The largest planet in our solar system is",
+        "T_melt": 1.3947576590735817,
+        "C_max": 9.109220038900531,
+        "p_top_at_melt": 0.19870717007734748
+      },
+      {
+        "prompt": "He picked up the phone and said",
+        "T_melt": 1.4292956157445262,
+        "C_max": 12.324889466026125,
+        "p_top_at_melt": 0.254464560389411
+      },
+      {
+        "prompt": "The first step in the process is to",
+        "T_melt": 1.361054288640686,
+        "C_max": 4.5005422662694725,
+        "p_top_at_melt": 0.025110843781993443
+      },
+      {
+        "prompt": "Scientists have discovered that the",
+        "T_melt": 0.6533956671227865,
+        "C_max": 7.386911372031794,
+        "p_top_at_melt": 0.17719906028278481
+      },
+      {
+        "prompt": "According to the report published last year, the company",
+        "T_melt": 1.175264474684825,
+        "C_max": 7.224739233057512,
+        "p_top_at_melt": 0.09159200680575613
+      },
+      {
+        "prompt": "The difference between the two methods is that",
+        "T_melt": 1.0148357761949953,
+        "C_max": 13.553614550692407,
+        "p_top_at_melt": 0.30908305667452196
+      },
+      {
+        "prompt": "It was raining when they arrived at the",
+        "T_melt": 0.9903129597249484,
+        "C_max": 6.10301487281622,
+        "p_top_at_melt": 0.057067585268649273
+      },
+      {
+        "prompt": "The book was written by",
+        "T_melt": 0.8763062909065539,
+        "C_max": 10.31734171999853,
+        "p_top_at_melt": 0.2935853769345877
+      },
+      {
+        "prompt": "One reason people prefer this is that",
+        "T_melt": 1.1468650078030775,
+        "C_max": 13.616199355728597,
+        "p_top_at_melt": 0.21231146305666657
+      },
+      {
+        "prompt": "After the war ended, the government began to",
+        "T_melt": 0.5924927271982569,
+        "C_max": 3.4433760739624586,
+        "p_top_at_melt": 0.13542187637267736
+      },
+      {
+        "prompt": "The temperature outside was about",
+        "T_melt": 1.538126240695702,
+        "C_max": 14.278037996477178,
+        "p_top_at_melt": 0.3500197651025871
+      },
+      {
+        "prompt": "In order to solve this problem, you need to",
+        "T_melt": 1.4646888252568817,
+        "C_max": 4.812707194454616,
+        "p_top_at_melt": 0.024516483475936466
+      },
+      {
+        "prompt": "The cat sat on the",
+        "T_melt": 1.2341905646430655,
+        "C_max": 5.8593644297064476,
+        "p_top_at_melt": 0.027783565150698908
+      }
+    ]
+  },
+  {
+    "model": "facebook/opt-125m",
+    "V": 50272,
+    "xstar": 11.186656923380543,
+    "ideal_p_top_at_melt": 0.5893922113504672,
+    "ideal_C_max": 30.285323280354458,
+    "measured_p_top_median": 0.0679730539461512,
+    "measured_p_top_mean": 0.08561924459256223,
+    "measured_p_top_q25": 0.044123262132964594,
+    "measured_p_top_q75": 0.11462373634496381,
+    "rows": [
+      {
+        "prompt": "The capital city of France is",
+        "T_melt": 1.092108252601901,
+        "C_max": 6.327454417780781,
+        "p_top_at_melt": 0.061070453336559825
+      },
+      {
+        "prompt": "The chemical symbol for gold is",
+        "T_melt": 0.9903129597249484,
+        "C_max": 9.192849091022909,
+        "p_top_at_melt": 0.12076546446007377
+      },
+      {
+        "prompt": "In a shocking turn of events, the mayor announced that",
+        "T_melt": 1.092108252601901,
+        "C_max": 12.449686837275028,
+        "p_top_at_melt": 0.16950279558697817
+      },
+      {
+        "prompt": "The main advantage of this approach is that it",
+        "T_melt": 1.4292956157445262,
+        "C_max": 7.5771047644668075,
+        "p_top_at_melt": 0.052540585670599035
+      },
+      {
+        "prompt": "She opened the door and saw",
+        "T_melt": 1.175264474684825,
+        "C_max": 10.745232280584611,
+        "p_top_at_melt": 0.09848402844043914
+      },
+      {
+        "prompt": "Water freezes at a temperature of",
+        "T_melt": 1.6552435383245194,
+        "C_max": 6.800336485515056,
+        "p_top_at_melt": 0.02431937899491797
+      },
+      {
+        "prompt": "My favourite thing about the summer is",
+        "T_melt": 1.2043671888656715,
+        "C_max": 10.564790061671456,
+        "p_top_at_melt": 0.11257649363992717
+      },
+      {
+        "prompt": "The largest planet in our solar system is",
+        "T_melt": 1.175264474684825,
+        "C_max": 6.636591253646762,
+        "p_top_at_melt": 0.048312747277584785
+      },
+      {
+        "prompt": "He picked up the phone and said",
+        "T_melt": 1.328165337236895,
+        "C_max": 11.366298119634916,
+        "p_top_at_melt": 0.09272174502628647
+      },
+      {
+        "prompt": "The first step in the process is to",
+        "T_melt": 1.361054288640686,
+        "C_max": 5.384477191576671,
+        "p_top_at_melt": 0.03155480669910402
+      },
+      {
+        "prompt": "Scientists have discovered that the",
+        "T_melt": 0.7205588832012365,
+        "C_max": 6.644492144032026,
+        "p_top_at_melt": 0.10158670671761322
+      },
+      {
+        "prompt": "According to the report published last year, the company",
+        "T_melt": 1.328165337236895,
+        "C_max": 8.014403510448545,
+        "p_top_at_melt": 0.05548372621253723
+      },
+      {
+        "prompt": "The difference between the two methods is that",
+        "T_melt": 1.092108252601901,
+        "C_max": 12.207837502855384,
+        "p_top_at_melt": 0.17350529814495302
+      },
+      {
+        "prompt": "It was raining when they arrived at the",
+        "T_melt": 0.9663827204400272,
+        "C_max": 7.7597367051558885,
+        "p_top_at_melt": 0.07487565455574258
+      },
+      {
+        "prompt": "The book was written by",
+        "T_melt": 0.7566866812299408,
+        "C_max": 8.032621158263275,
+        "p_top_at_melt": 0.25635637178213355
+      },
+      {
+        "prompt": "One reason people prefer this is that",
+        "T_melt": 1.1468650078030775,
+        "C_max": 13.152999490602888,
+        "p_top_at_melt": 0.13647955695131772
+      },
+      {
+        "prompt": "After the war ended, the government began to",
+        "T_melt": 1.576214389636841,
+        "C_max": 4.369633975147547,
+        "p_top_at_melt": 0.007745197138516645
+      },
+      {
+        "prompt": "The temperature outside was about",
+        "T_melt": 1.6552435383245194,
+        "C_max": 6.99849133035426,
+        "p_top_at_melt": 0.017413400287289896
+      },
+      {
+        "prompt": "In order to solve this problem, you need to",
+        "T_melt": 1.500958465974782,
+        "C_max": 5.45946439413394,
+        "p_top_at_melt": 0.016332528261151072
+      },
+      {
+        "prompt": "The cat sat on the",
+        "T_melt": 1.175264474684825,
+        "C_max": 7.3184989258596,
+        "p_top_at_melt": 0.06075795266751937
+      }
+    ]
+  },
+  {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "V": 151936,
+    "xstar": 12.260409050845222,
+    "ideal_p_top_at_melt": 0.5815633471813945,
+    "ideal_C_max": 36.57940752351186,
+    "measured_p_top_median": 0.1024678056479221,
+    "measured_p_top_mean": 0.12915787706151136,
+    "measured_p_top_q25": 0.03446089085769143,
+    "measured_p_top_q75": 0.18032379023328163,
+    "rows": [
+      {
+        "prompt": "The capital city of France is",
+        "T_melt": 1.500958465974782,
+        "C_max": 10.505070965360478,
+        "p_top_at_melt": 0.07936586897063518
+      },
+      {
+        "prompt": "The chemical symbol for gold is",
+        "T_melt": 1.696231827031594,
+        "C_max": 12.326082888298137,
+        "p_top_at_melt": 0.09728056223401166
+      },
+      {
+        "prompt": "In a shocking turn of events, the mayor announced that",
+        "T_melt": 1.296071124980151,
+        "C_max": 11.427256359445762,
+        "p_top_at_melt": 0.1516628822949398
+      },
+      {
+        "prompt": "The main advantage of this approach is that it",
+        "T_melt": 1.7382350961764335,
+        "C_max": 8.207281217299425,
+        "p_top_at_melt": 0.02805326792310647
+      },
+      {
+        "prompt": "She opened the door and saw",
+        "T_melt": 1.264752447539369,
+        "C_max": 11.221876922127018,
+        "p_top_at_melt": 0.1475460412748801
+      },
+      {
+        "prompt": "Water freezes at a temperature of",
+        "T_melt": 1.696231827031594,
+        "C_max": 14.336817311500736,
+        "p_top_at_melt": 0.17418453795268055
+      },
+      {
+        "prompt": "My favourite thing about the summer is",
+        "T_melt": 1.3947576590735817,
+        "C_max": 9.942611647860407,
+        "p_top_at_melt": 0.09457797316290385
+      },
+      {
+        "prompt": "The largest planet in our solar system is",
+        "T_melt": 1.6552435383245194,
+        "C_max": 8.562198552998991,
+        "p_top_at_melt": 0.025811714845418065
+      },
+      {
+        "prompt": "He picked up the phone and said",
+        "T_melt": 1.4646888252568817,
+        "C_max": 11.883284563955051,
+        "p_top_at_melt": 0.10765504906183256
+      },
+      {
+        "prompt": "The first step in the process is to",
+        "T_melt": 1.6552435383245194,
+        "C_max": 7.197271640913982,
+        "p_top_at_melt": 0.019135879953931293
+      },
+      {
+        "prompt": "Scientists have discovered that the",
+        "T_melt": 0.6861559969792015,
+        "C_max": 6.62533957931859,
+        "p_top_at_melt": 0.16659693776837975
+      },
+      {
+        "prompt": "According to the report published last year, the company",
+        "T_melt": 1.264752447539369,
+        "C_max": 9.104147667290738,
+        "p_top_at_melt": 0.07119861788049898
+      },
+      {
+        "prompt": "The difference between the two methods is that",
+        "T_melt": 1.296071124980151,
+        "C_max": 14.910392175852786,
+        "p_top_at_melt": 0.22613409327782283
+      },
+      {
+        "prompt": "It was raining when they arrived at the",
+        "T_melt": 1.3947576590735817,
+        "C_max": 7.851780235816228,
+        "p_top_at_melt": 0.03659676516921975
+      },
+      {
+        "prompt": "The book was written by",
+        "T_melt": 1.0399658436574877,
+        "C_max": 11.156835004778111,
+        "p_top_at_melt": 0.2549457534481392
+      },
+      {
+        "prompt": "One reason people prefer this is that",
+        "T_melt": 1.1468650078030775,
+        "C_max": 15.765839701434095,
+        "p_top_at_melt": 0.23997686603128784
+      },
+      {
+        "prompt": "After the war ended, the government began to",
+        "T_melt": 0.8143029528418765,
+        "C_max": 6.842404015580513,
+        "p_top_at_melt": 0.42223765870037033
+      },
+      {
+        "prompt": "The temperature outside was about",
+        "T_melt": 1.696231827031594,
+        "C_max": 15.96644961001622,
+        "p_top_at_melt": 0.19874154707508485
+      },
+      {
+        "prompt": "In order to solve this problem, you need to",
+        "T_melt": 1.696231827031594,
+        "C_max": 7.675774988335476,
+        "p_top_at_melt": 0.016230426031838326
+      },
+      {
+        "prompt": "The cat sat on the",
+        "T_melt": 1.4292956157445262,
+        "C_max": 6.830036703538549,
+        "p_top_at_melt": 0.025225098173245832
+      }
+    ]
+  },
+  {
+    "model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "V": 151936,
+    "xstar": 12.260409050845222,
+    "ideal_p_top_at_melt": 0.5815633471813945,
+    "ideal_C_max": 36.57940752351186,
+    "measured_p_top_median": 0.09704978079259872,
+    "measured_p_top_mean": 0.10590935357655917,
+    "measured_p_top_q25": 0.05200537048032344,
+    "measured_p_top_q75": 0.13408937719872083,
+    "rows": [
+      {
+        "prompt": "The capital city of France is",
+        "T_melt": 1.4646888252568817,
+        "C_max": 9.782287856956994,
+        "p_top_at_melt": 0.09625434459703734
+      },
+      {
+        "prompt": "The chemical symbol for gold is",
+        "T_melt": 1.7382350961764335,
+        "C_max": 11.392531698973475,
+        "p_top_at_melt": 0.11702038370868151
+      },
+      {
+        "prompt": "In a shocking turn of events, the mayor announced that",
+        "T_melt": 1.328165337236895,
+        "C_max": 11.59776038303418,
+        "p_top_at_melt": 0.16833756846984446
+      },
+      {
+        "prompt": "The main advantage of this approach is that it",
+        "T_melt": 1.6552435383245194,
+        "C_max": 7.693573547485506,
+        "p_top_at_melt": 0.026937775191706977
+      },
+      {
+        "prompt": "She opened the door and saw",
+        "T_melt": 1.3947576590735817,
+        "C_max": 11.212608454463947,
+        "p_top_at_melt": 0.12267331344167963
+      },
+      {
+        "prompt": "Water freezes at a temperature of",
+        "T_melt": 1.7382350961764335,
+        "C_max": 13.852616146084634,
+        "p_top_at_melt": 0.10921344826195065
+      },
+      {
+        "prompt": "My favourite thing about the summer is",
+        "T_melt": 1.361054288640686,
+        "C_max": 8.841501138171237,
+        "p_top_at_melt": 0.08912994097708087
+      },
+      {
+        "prompt": "The largest planet in our solar system is",
+        "T_melt": 1.696231827031594,
+        "C_max": 8.169466886298025,
+        "p_top_at_melt": 0.038049914223094644
+      },
+      {
+        "prompt": "He picked up the phone and said",
+        "T_melt": 1.6152457037430892,
+        "C_max": 12.113216883482652,
+        "p_top_at_melt": 0.08254388748258722
+      },
+      {
+        "prompt": "The first step in the process is to",
+        "T_melt": 1.6552435383245194,
+        "C_max": 6.340724933585427,
+        "p_top_at_melt": 0.012975943458670742
+      },
+      {
+        "prompt": "Scientists have discovered that the",
+        "T_melt": 0.6861559969792015,
+        "C_max": 5.072439243901354,
+        "p_top_at_melt": 0.11629881197657559
+      },
+      {
+        "prompt": "According to the report published last year, the company",
+        "T_melt": 1.4292956157445262,
+        "C_max": 8.93204062768428,
+        "p_top_at_melt": 0.06032350931143265
+      },
+      {
+        "prompt": "The difference between the two methods is that",
+        "T_melt": 1.1191517947276344,
+        "C_max": 15.40019206551568,
+        "p_top_at_melt": 0.22621016902558125
+      },
+      {
+        "prompt": "It was raining when they arrived at the",
+        "T_melt": 1.328165337236895,
+        "C_max": 7.3115053808504165,
+        "p_top_at_melt": 0.056657189232733045
+      },
+      {
+        "prompt": "The book was written by",
+        "T_melt": 1.0148357761949953,
+        "C_max": 9.973853347833419,
+        "p_top_at_melt": 0.2560566788794471
+      },
+      {
+        "prompt": "One reason people prefer this is that",
+        "T_melt": 1.1191517947276344,
+        "C_max": 14.36866730884873,
+        "p_top_at_melt": 0.22264698911082687
+      },
+      {
+        "prompt": "After the war ended, the government began to",
+        "T_melt": 1.964377935723191,
+        "C_max": 5.632513778424788,
+        "p_top_at_melt": 0.007056315409648332
+      },
+      {
+        "prompt": "The temperature outside was about",
+        "T_melt": 1.6152457037430892,
+        "C_max": 14.112058488553185,
+        "p_top_at_melt": 0.19987144960315217
+      },
+      {
+        "prompt": "In order to solve this problem, you need to",
+        "T_melt": 1.964377935723191,
+        "C_max": 6.906465390431686,
+        "p_top_at_melt": 0.01208422218129241
+      },
+      {
+        "prompt": "The cat sat on the",
+        "T_melt": 1.361054288640686,
+        "C_max": 9.529326357494627,
+        "p_top_at_melt": 0.09784521698816011
+      }
+    ]
+  },
+  {
+    "model": "bigscience/bloomz-560m",
+    "V": 250880,
+    "xstar": 12.749090294844533,
+    "ideal_p_top_at_melt": 0.5784369689815735,
+    "ideal_C_max": 39.63482583652477,
+    "measured_p_top_median": 0.13497636871040825,
+    "measured_p_top_mean": 0.14950042457982043,
+    "measured_p_top_q25": 0.06241307887292477,
+    "measured_p_top_q75": 0.20665788375638494,
+    "rows": [
+      {
+        "prompt": "The capital city of France is",
+        "T_melt": 1.264752447539369,
+        "C_max": 14.437943752044443,
+        "p_top_at_melt": 0.39978751814113195
+      },
+      {
+        "prompt": "The chemical symbol for gold is",
+        "T_melt": 1.1191517947276344,
+        "C_max": 7.178613521932302,
+        "p_top_at_melt": 0.08601264417771096
+      },
+      {
+        "prompt": "In a shocking turn of events, the mayor announced that",
+        "T_melt": 1.0148357761949953,
+        "C_max": 11.964885327471297,
+        "p_top_at_melt": 0.19010303804398573
+      },
+      {
+        "prompt": "The main advantage of this approach is that it",
+        "T_melt": 1.328165337236895,
+        "C_max": 6.189482829443221,
+        "p_top_at_melt": 0.06528863682373161
+      },
+      {
+        "prompt": "She opened the door and saw",
+        "T_melt": 1.1191517947276344,
+        "C_max": 11.087167603464186,
+        "p_top_at_melt": 0.15189528633998817
+      },
+      {
+        "prompt": "Water freezes at a temperature of",
+        "T_melt": 1.500958465974782,
+        "C_max": 6.153879914123719,
+        "p_top_at_melt": 0.02839160980536706
+      },
+      {
+        "prompt": "My favourite thing about the summer is",
+        "T_melt": 1.0399658436574877,
+        "C_max": 10.089862775555053,
+        "p_top_at_melt": 0.29630796533152004
+      },
+      {
+        "prompt": "The largest planet in our solar system is",
+        "T_melt": 1.2341905646430655,
+        "C_max": 9.311209906325958,
+        "p_top_at_melt": 0.12577660115427675
+      },
+      {
+        "prompt": "He picked up the phone and said",
+        "T_melt": 1.264752447539369,
+        "C_max": 9.739609861088299,
+        "p_top_at_melt": 0.19002367446180327
+      },
+      {
+        "prompt": "The first step in the process is to",
+        "T_melt": 1.264752447539369,
+        "C_max": 4.976271378948185,
+        "p_top_at_melt": 0.023366818644059133
+      },
+      {
+        "prompt": "Scientists have discovered that the",
+        "T_melt": 0.6071644431101203,
+        "C_max": 6.843386997220837,
+        "p_top_at_melt": 0.14417613626653975
+      },
+      {
+        "prompt": "According to the report published last year, the company",
+        "T_melt": 1.065718199282738,
+        "C_max": 7.91201094045396,
+        "p_top_at_melt": 0.07154823277522242
+      },
+      {
+        "prompt": "The difference between the two methods is that",
+        "T_melt": 1.0399658436574877,
+        "C_max": 15.115828322883022,
+        "p_top_at_melt": 0.3354438459741579
+      },
+      {
+        "prompt": "It was raining when they arrived at the",
+        "T_melt": 1.0148357761949953,
+        "C_max": 6.421858370448742,
+        "p_top_at_melt": 0.05378640502050425
+      },
+      {
+        "prompt": "The book was written by",
+        "T_melt": 0.8763062909065539,
+        "C_max": 10.264217568863279,
+        "p_top_at_melt": 0.29469836316223874
+      },
+      {
+        "prompt": "One reason people prefer this is that",
+        "T_melt": 1.1468650078030775,
+        "C_max": 14.496904659019684,
+        "p_top_at_melt": 0.25632242089358254
+      },
+      {
+        "prompt": "After the war ended, the government began to",
+        "T_melt": 1.576214389636841,
+        "C_max": 3.8128135333688267,
+        "p_top_at_melt": 0.007930495663636294
+      },
+      {
+        "prompt": "The temperature outside was about",
+        "T_melt": 1.576214389636841,
+        "C_max": 6.50050316465384,
+        "p_top_at_melt": 0.014292189623299426
+      },
+      {
+        "prompt": "In order to solve this problem, you need to",
+        "T_melt": 1.361054288640686,
+        "C_max": 7.591716118016492,
+        "p_top_at_melt": 0.08328233643559108
+      },
+      {
+        "prompt": "The cat sat on the",
+        "T_melt": 1.092108252601901,
+        "C_max": 8.695495146286664,
+        "p_top_at_melt": 0.17157427285806107
+      }
+    ]
+  }
+]

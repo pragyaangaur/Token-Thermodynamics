@@ -5,6 +5,7 @@ The files here are the derived results that back the claims in FINDINGS.md. They
 | File | What it holds |
 | --- | --- |
 | `multimodel_melt3.json` | Melting temperature and energy gap for 7 pretrained models on 20 shared prompts. Read by `repro.py`. |
+| `peak_occupancy.json` | Top-token probability at the heat-capacity maximum for the same 7 models and 20 prompts. |
 | `vocab_exp.json` | The 5 tiny models trained with only the vocabulary size changed. Read by `repro.py`. |
 | `meltlaw_1p5b.json` | Melting temperature against top-k truncation, 10 prompts by 10 truncation levels. |
 | `melt_1p5b.json` | Melting temperature at every token position of four passages. |
