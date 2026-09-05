@@ -24,9 +24,9 @@ which is the Boltzmann distribution, so the usual thermodynamic quantities becom
 - Predictive entropy is exactly $S(T=1)$.
 - Varentropy, the variance of surprisal used in adaptive samplers, is exactly the heat capacity $C(T=1)$.
 
-The second follows in one line. Surprisal is $-\log p_i = \beta E_i + \log Z$, so its variance is $\beta^2 \operatorname{Var}(E)$, which is the heat capacity
+The second follows in one line. Surprisal is $-\log p_i = \beta E_i + \log Z$, so its variance is $\beta^2 \mathrm{Var}(E)$, which is the heat capacity
 
-$$C(T) = \frac{dU}{dT} = \frac{\operatorname{Var}(E)}{T^2}.$$
+$$C(T) = \frac{dU}{dT} = \frac{\mathrm{Var}(E)}{T^2}.$$
 
 Both identities were verified numerically to 1 part in $10^{14}$. On 3096 factual questions, all seven common baseline scalars together score the same as those two alone, AUROC 0.8575 against 0.8575, with a paired bootstrap 95% CI of $[-0.0016, +0.0015]$.
 
@@ -60,7 +60,7 @@ These matter, and they are stated here rather than buried.
 
 ## Installing
 
-There are two requirement files, because checking the main claim should not mean installing PyTorch.
+Python 3.12 or newer, because the pinned numpy and scipy require it. There are two requirement files, because checking the main claim should not mean installing PyTorch.
 
 | File | What it covers | Size |
 | --- | --- | --- |
