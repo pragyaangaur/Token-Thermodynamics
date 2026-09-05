@@ -1,0 +1,23 @@
+# Raw probe outputs. These are regenerable with src/probe.py and are too large for git.
+data/main_1p5b.json
+data/main_0p5b.json
+data/fake_1p5b.json
+data/smoke.json
+data/*.pkl
+
+# Training corpus and tokenizers, rebuilt by src/vocab_experiment.py
+data/corpus/
+data/tok/
+
+# Scratch
+logs/
+run_*.sh
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+venv/
+
+# Personal outreach material, not for a public repository
+OUTREACH.md
+EMAILS.md
