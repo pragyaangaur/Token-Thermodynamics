@@ -40,7 +40,7 @@ where $x^\ast = \log V + c$ with $c$ a slow correction of order one. For a vocab
 
 This is confirmed across 12 models spanning 976x in vocabulary size, including 5 small transformers trained here on identical data where only the vocabulary size changed. Including the $\log V$ term cuts model-to-model scatter by 58 percent, and the bootstrap 95% CI on that improvement is $[-0.269, -0.082]$.
 
-**Free-form and factual generation are opposite regimes.** Forking every top candidate first token and continuing it to see where it lands shows that 94.7 percent of the entropy at the first token of a free-form answer is pure phrasing carrying no information about meaning. For a short factual answer the figure is 13.2 percent. This replicates on a second model at 90.6 percent and 4.8 percent.
+**Free-form and factual generation are opposite regimes.** Forking the top 12 candidate first tokens and continuing each to see where it lands shows that 94.7 percent of the entropy within that renormalised candidate set is pure phrasing carrying no information about meaning. For a short factual answer the figure is 13.2 percent. This replicates on a second model at 90.6 percent and 4.8 percent. These are not percentages of the full-vocabulary entropy.
 
 **Token entropy points the wrong way in the free-form regime, and the direction is not stable.** Reporting signed AUROC, where above 0.5 means the score rises with fabrication, plain token entropy scores 0.098 on Qwen2.5-0.5B for known against fabricated questions. Higher entropy there means the model knows the answer. On Qwen2.5-1.5B it points the right way for one comparison and the wrong way for another. Sampled semantic entropy keeps the correct sign in all four comparisons.
 
@@ -77,7 +77,7 @@ pip install -r requirements-models.txt   # only if you want to regenerate from t
 ```
 repro.py                      reproduces the headline melting-law table from committed data
 src/thermo.py                 exact thermodynamics of a logit vector, plus the Schottky reference
-src/dos.py                    density-of-states compression, 1e-5 accurate and about 90x faster
+src/dos.py                    density-of-states compression, errors of order 1e-5 and about 90x faster
 src/features.py               baseline uncertainty scalars, computed on the full vocabulary
 src/curvefeats.py             spectral features of a heat-capacity curve
 src/probe.py                  Wikidata question probe and grading
@@ -107,18 +107,18 @@ python src/multimodel_melt.py --out data/multimodel_melt3.json      # downloads 
 python src/vocab_experiment.py --out data/vocab_exp.json --epochs 3 # trains 5 tiny models, about 20 minutes
 ```
 
-The probe runs took about 30 minutes each on an Apple M4 in float32. Float32 is deliberate, because the method reads fine structure in the logits, though `src/validate.py` includes a noise robustness check showing the integral features tolerate logit noise of $5 \times 10^{-2}$.
+The probe runs took about 30 minutes each on an Apple M4 in float32. Float32 is deliberate, because the method reads fine structure in the logits. The noise experiment reported in FINDINGS.md section 6 shows that the integral features tolerate logit noise of $5 \times 10^{-2}$.
 
 ## Validation
 
-The implementation is checked against analytic results rather than only against itself. Continuous integration runs `repro.py` and `src/validate.py` on a clean machine on every push.
+The implementation is checked against analytic results rather than only against itself. Continuous integration runs `repro.py` and `src/validate.py` on a clean machine on every push. Both scripts contain explicit assertions and exit nonzero if a stated tolerance or headline condition fails.
 
 | Check | Agreement |
 | --- | --- |
 | $F = U - TS$ | $10^{-11}$ |
-| $dU/dT = C$ on the temperature grid | $3 \times 10^{-6}$ |
-| Two-level Schottky heat capacity, including the universal peak $T^\ast/\Delta = 0.4177$ | $5 \times 10^{-16}$ |
-| Density-of-states compression against exact full-vocabulary summation | $10^{-5}$ |
+| $dU/dT = C$ at six independently differenced temperatures | relative error below $10^{-6}$ |
+| Two-level Schottky heat capacity, including the universal peak $T^\ast/\Delta = 0.41678\ldots$ | curve error below $2 \times 10^{-14}$ |
+| Density-of-states compression against exact summation | absolute entropy error below $10^{-5}$; heat-capacity error below $2 \times 10^{-5}$ |
 
 ```bash
 python src/validate.py

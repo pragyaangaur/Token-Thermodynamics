@@ -8,10 +8,11 @@ generation that turned out to matter more (sections 7f to 7k).
 
 **The four strongest results.**
 
-1. **Free-form and factual generation are opposite regimes.** At the first token of a
-   free-form answer, 94.7% of the entropy is pure phrasing and carries no information about
-   meaning. For a short factual answer it is 13.2%. Measured by forking every candidate
-   token and continuing it to see where it lands.
+1. **Free-form and factual generation are opposite regimes.** Among the renormalised top 12
+   candidates at the first token of a free-form answer, 94.7% of the entropy is pure phrasing
+   and carries no information about meaning. For a short factual answer it is 13.2%. Measured
+   by forking those candidates and continuing each to see where it lands; these percentages
+   do not describe the omitted vocabulary tail.
 2. **Token entropy is anticorrelated with meaning-relevance in free-form text**
    (Spearman −0.23, and the direction holds at every clustering threshold tested). The
    highest-entropy positions in an answer carry a mean meaning share of 0.0000. On real
@@ -450,11 +451,12 @@ numbers are directly comparable.
 | median within-meaning logit spread | 8.932 | 4.877 |
 | median between-meaning logit spread | 5.952 | 7.088 |
 | semantic entropy vs token entropy | 0.0219 vs 0.4098 | 0.6428 vs 0.7408 |
-| **share of token entropy that is pure paraphrase** | **94.7%** | **13.2%** |
+| **share of top-12-renormalised entropy that is pure paraphrase** | **94.7%** | **13.2%** |
 
 **Prediction confirmed, and the size of the effect is larger than I expected.** For
-free-form answers, 94.7% of the next-token entropy is surface variation carrying no
-information about meaning. For short factual answers it is 13.2%. The two regimes are not
+free-form answers, 94.7% of the entropy among the renormalised top 12 next-token candidates is
+surface variation carrying no information about meaning. For short factual answers it is
+13.2%. The omitted vocabulary tail is not included. The two regimes are not
 slightly different, they are opposite.
 
 This is the cleanest statement in the whole project of when the sampling-based methods
@@ -579,18 +581,19 @@ measured real melting transitions to be about 3x broader than that ideal.
 
 ## 7i. Where a free-form answer's content is actually decided, and why entropy detectors miss it
 
-Section 7f showed that at the first token of a free-form answer, 94.7% of the entropy is
-phrasing. The obvious next question is where the content gets decided instead. So I walked
+Section 7f showed that at the first token of a free-form answer, 94.7% of the renormalised
+top-12 candidate entropy is phrasing. The obvious next question is where the content gets
+decided instead. So I walked
 along each greedy answer and, at **every** position, forked the top 8 alternative tokens,
 continued each greedily, and clustered the resulting complete answers by meaning. That
 gives a per-position split:
 
-    meaning share(t) = semantic entropy at position t / token entropy at position t
+    meaning share(t) = semantic entropy at position t / renormalised top-8 entropy at position t
 
 0 means the choice at that position is pure phrasing. 1 means it fully determines what the
 answer says. 12 free-form questions, 480 token positions, Qwen2.5-1.5B.
 
-| positions | n | mean token entropy | mean meaning share | share of the answer's total semantic entropy |
+| positions | n | mean top-8 entropy | mean meaning share | share of the answer's total semantic entropy |
 |---|---|---|---|---|
 | 0 | 12 | 0.183 | 0.218 | 40.0% |
 | 1 to 2 | 24 | 0.271 | 0.081 | 58.8% |
@@ -604,21 +607,21 @@ At this clustering threshold, 98.8% of the semantic entropy sits in the first th
 and 96.9% of positions read as pure phrasing. That specific figure turns out to depend on
 the threshold, and the sensitivity analysis below says which parts of it survive.
 
-Notice that token entropy moves the opposite way. It is lowest at position 0 (0.183) where
+Notice that top-8-renormalised entropy moves the opposite way. It is lowest at position 0 (0.183) where
 all the meaning is decided, and highest late in the answer (0.777) where none of it is.
 
 ### The consequence for entropy-based hallucination detection
 
 | measurement | value |
 |---|---|
-| Spearman(token entropy, meaning share) | **−0.230** |
-| Spearman(token entropy, semantic entropy) | −0.226 |
+| Spearman(top-8 entropy, meaning share) | **−0.230** |
+| Spearman(top-8 entropy, semantic entropy) | −0.226 |
 | among the 20% highest-entropy positions: mean meaning share | **0.0000** |
 | ...fraction of those carrying no meaning information | **100%** |
 | among positions that do decide meaning (share > 0.2): mean entropy | 0.294 (overall mean 0.657) |
 | ...fraction of those below median entropy | 75% |
 
-Token entropy is **anticorrelated** with whether a position carries meaning. The positions a
+Top-8-renormalised entropy is **anticorrelated** with whether a position carries meaning. The positions a
 detector flags are precisely the ones that do not matter. Concretely, the highest-entropy
 positions in the sample were tokens like ` tiny`, ` weather`, ` contains`, ` sudden`,
 ` bicycle`, all with entropy near 2.0 nats and a meaning share of exactly 0.000. Meanwhile
@@ -707,7 +710,8 @@ of the mass on a single one. Enormous freedom in wording, essentially none in me
 entropy bonus is large but it accrues entirely *inside* one meaning, so there is no
 competing meaning for it to tip the balance toward.
 
-Three measurements now agree: 94.7% of first-token entropy is phrasing (7f), 98.8% of the
+Three measurements now agree: 94.7% of renormalised top-12 first-token entropy is phrasing
+(7f), 98.8% of the
 meaning signal sits in the first three tokens and 96.9% of positions are pure phrasing
 (7i), and whole sampled answers are textually unique but semantically identical (7j).
 
@@ -842,20 +846,25 @@ that killed my own proposed method.
 - Models: Qwen2.5-1.5B-Instruct and Qwen2.5-0.5B-Instruct, float32 on Apple M4 (MPS).
   float32 rather than a lower precision because the whole method reads fine structure in
   the logits, though section 6 shows the integral features tolerate 5e-2 of logit noise.
-- Data: 3096 questions built from Wikidata SPARQL with verified ground truth, in four
+- Data: 3096 questions built from Wikidata SPARQL ground truth, in four
   relation types (country capital 207, chemical element symbol 174, film director 1559,
   book author 1156). Plus 1000 questions about generated non-existent entities.
 - Greedy decoding, up to 12 new tokens. All features come from the logits at the first
   generated token unless marked `sp_` (mean spectrum over the whole answer span).
+- The phrasing-versus-meaning percentages in section 7f are computed over the top 12
+  candidates after renormalising their logits; they are not fractions of full-vocabulary
+  entropy. Meaning clusters use single-linkage cosine similarity at one threshold.
 - Grading: normalised string containment against the Wikidata value, with a surname
   match allowed for people. Overall accuracy 35.2% (1.5B) and 13.2% (0.5B).
 - Thermodynamic curves on 300 log-spaced inverse temperatures from `T=100` down to
   `T=0.0033`. Computed from a density-of-states compression: the top 1024 logits kept
-  exactly, the remaining ~151k binned into 512 histogram bins. This is accurate to 1e-5
-  relative and about 90x faster than summing over the full vocabulary.
-- The implementation is validated against analytic results: `F = U - TS` to 1e-11,
-  `dU/dT = C` to 3e-6 on the grid, and the two-level Schottky heat capacity reproduced
-  to 5e-16 including the universal peak position `T*/gap = 0.4177`.
+  exactly, the remaining ~151k binned into 512 histogram bins. On the validation fixture,
+  absolute entropy error is below 1e-5 and heat-capacity error below 2e-5; the method is
+  about 90x faster than summing over the full vocabulary.
+- The implementation is validated against analytic results: `F = U - TS` to 2e-11,
+  `dU/dT = C` to 1e-6 relative error at independently differenced temperatures, and the
+  two-level Schottky heat-capacity curve to 2e-14, including the universal peak position
+  `T*/gap = 0.416778...`.
 - Statistics: AUROC with 2000-sample bootstrap intervals for single features, 5-fold by
   4-repeat cross-validated logistic regression for feature sets, and a 4000-sample
   paired bootstrap on out-of-fold scores for comparing two feature sets on the same

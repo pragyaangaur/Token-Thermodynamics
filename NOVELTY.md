@@ -89,9 +89,10 @@ increases".
 
 So the idea is not new. What I can find no prior work on is the **quantification**:
 
-- Nobody appears to have measured *how much* of a next-token distribution's entropy is
-  phrasing rather than meaning. My numbers are 94.7% for free-form and 13.2% for short
-  factual, measured by forking every top candidate token and continuing it.
+- Nobody appears to have measured *how much* of the entropy among the leading next-token
+  candidates is phrasing rather than meaning. My numbers are 94.7% for free-form and 13.2%
+  for short factual, measured on the renormalised top 12 candidates by forking and continuing
+  each. The full-vocabulary entropy fraction remains unmeasured.
 - Nobody appears to have mapped it **position by position** along a generated answer, or
   reported that meaning share falls monotonically while token entropy rises.
 - I found no prior report of the **anticorrelation** as a measured quantity
@@ -110,10 +111,10 @@ and honestly theirs is the more practical method.
 | # | Claim | Verdict |
 |---|---|---|
 | 14 | Token entropy conflates phrasing with meaning | **Not novel at all.** This is the stated motivation of the entire semantic entropy line of work. I arrived at it independently, which is not the same as it being new. |
-| 15 | 94.7% of free-form first-token entropy is phrasing, 13.2% for short factual | **Novel as a measurement.** The concept is old, the number does not appear to have been measured. |
+| 15 | 94.7% of renormalised top-12 first-token entropy is phrasing, 13.2% for short factual | **Novel as a measurement.** The concept is old, the scoped number does not appear to have been measured. |
 | 16 | 96.7% of top candidate first tokens lead to a different answer on factual questions | **Novel measurement**, and still the result I am most confident is new. |
 | 17 | Position-resolved meaning share, monotone decreasing, entropy rising | **Novel measurement.** Semantic Entropy Probes look at positions but for a different purpose. |
-| 18 | Spearman(token entropy, meaning share) = −0.230; top-quintile entropy positions have mean meaning share 0.0000 | **Novel measurement.** The direction is folklore; the number is not published anywhere I can find. |
+| 18 | Spearman(renormalised top-8 entropy, meaning share) = −0.230; its top-quintile positions have mean meaning share 0.0000 | **Novel measurement.** The direction is folklore; the scoped number is not published anywhere I can find. |
 | 19 | Forking only the first 1 to 2 tokens matches full semantic entropy at 1.6x lower cost | **Novel method**, though a small and lightly-tested one (16 questions per condition). Semantic Entropy Probes achieve a bigger cost saving by a different route. |
 | 20 | Plain token entropy is at chance (0.523) separating known from obscure free-form questions | **Novel measurement**, and the most useful negative in the project. |
 | 21 | The melting law confirmed across 12 models spanning 976x in vocabulary | **Novel.** The Schottky peak condition is textbook physics from the 1930s; applying it to token distributions and testing it across models, including five trained specifically to vary V, does not appear to have been done. |

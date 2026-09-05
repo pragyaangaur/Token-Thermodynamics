@@ -157,8 +157,10 @@ It flipped completely.
 
 For factual questions, 67.8% of the model's candidate next words led somewhere genuinely
 different. For open-ended questions, only 9.2% did. Put the other way round: when the model
-starts an open-ended answer, **94.7% of its uncertainty is about wording and only 5.3% is
-about content**. For a factual question it is the reverse, 13.2% wording.
+starts an open-ended answer, **94.7% of the uncertainty among its top 12 candidate tokens is
+about wording and only 5.3% is about content**. For a factual question it is the reverse,
+13.2% wording. This experiment renormalises those 12 candidates and does not measure the
+rest of the vocabulary.
 
 This matters practically. There is a well-known technique that generates ten answers and
 groups the ones that mean the same thing, specifically to strip out the wording noise. Now
