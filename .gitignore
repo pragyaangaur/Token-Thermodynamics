@@ -21,3 +21,6 @@ venv/
 # Personal outreach material, not for a public repository
 OUTREACH.md
 EMAILS.md
+
+# Local editor and tooling config
+.claude/
