@@ -912,3 +912,7 @@ New items, in priority order:
    Several logit-aggregating uncertainty methods use means. Pythia's mean logit sits 2.2
    standard deviations from its mode. Whether that changes any published cross-model
    comparison is a concrete, checkable question.
+
+Added 16 September 2026, after reading the closest prior work listed in `NOVELTY.md`:
+
+9. **Compare `T_melt` against the two published critical temperatures.** Arnold et al. (arXiv 2405.17088) report a high-temperature transition at `T_2* = 0.5` for Pythia 70M, found from a sequence-level heat capacity that needs 20,480 generations per temperature point. Du, Yang and Welleck (arXiv 2502.05234) choose a sampling temperature at the turning point of `log H(T)`, found by a temperature sweep. `T_melt` comes from one forward pass. The measured `T_melt` values of 1.0 to 1.5 are currently a factor of two to three above `T_2*`, so the first step is to run both on the same model and prompts, starting with Pythia, and report the ratio and its spread across prompts. If `T_melt` tracks either critical point, it gives the melting law the practical use it does not yet have. If it does not, the ratio is still a result.

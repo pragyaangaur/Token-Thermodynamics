@@ -28,7 +28,7 @@ The second follows in one line. Surprisal is $-\log p_i = \beta E_i + \log Z$, s
 
 $$C(T) = \frac{dU}{dT} = \frac{\mathrm{Var}(E)}{T^2}.$$
 
-Both identities were verified numerically to 1 part in $10^{14}$. On 3096 factual questions, all seven common baseline scalars together score the same as those two alone, AUROC 0.8575 against 0.8575, with a paired bootstrap 95% CI of $[-0.0016, +0.0015]$.
+This relation between surprisal variance and heat capacity is published in Reeb and Wolf (2015), Equation 24, and this repository does not claim it. Both identities were verified numerically to 1 part in $10^{14}$ as a check on the implementation. On 3096 factual questions, all seven common baseline scalars together score the same as those two alone, AUROC 0.8575 against 0.8575, with a paired bootstrap 95% CI of $[-0.0016, +0.0015]$.
 
 ## Main results
 
@@ -47,6 +47,16 @@ This is confirmed across 12 models spanning 976x in vocabulary size, including 5
 **A measurement error that looked like a refutation.** The cross-model melting test first appeared to fail badly, with a 9.7x spread and the wrong sign. The cause was measuring the energy gap $\Delta$ to the mean logit. Some models have extreme outlier logits that pull the mean far from where the states actually sit, and Pythia's mean logit is 2.2 standard deviations from its mode. Measuring $\Delta$ to the mode instead, which is what the theory asks for, brings all 12 models into line. Several published uncertainty measures aggregate logits by mean, and that choice is worth checking before comparing across model families.
 
 Full detail, including every falsified hypothesis, is in [FINDINGS.md](FINDINGS.md). A literature audit of which claims are new and which are not is in [NOVELTY.md](NOVELTY.md). A plain English version is in [ELI5.md](ELI5.md).
+
+## Closest prior work
+
+Three papers are close enough that anyone reading this repository should know them first. The comparison in detail is in [NOVELTY.md](NOVELTY.md).
+
+- **Arnold, Holtorf, Schäfer and Lörch (2024)**, *Phase Transitions in the Output Distribution of Large Language Models*, [arXiv 2405.17088](https://arxiv.org/abs/2405.17088). They treat logits as energies, sweep the sampling temperature, compute a heat capacity, and report a high-temperature transition. They work on the full generated sequence, where they note that the Boltzmann mapping does not hold and the heat capacity can go negative. This repository works on the single next-token distribution, where the mapping is exact and the heat capacity cannot be negative.
+- **Reeb and Wolf (2015)**, *Tight bound on relative entropy by entropy difference*, [arXiv 1304.0036](https://arxiv.org/abs/1304.0036). Equation 24 is the varentropy and heat capacity identity. Theorem 8 and Corollary 10 give the maximum-heat-capacity state and its bound $\log^2(d-1)/4 + 1$, which the ideal melt model in [PEAK_OCCUPANCY.md](PEAK_OCCUPANCY.md) rederives.
+- **Du, Yang and Welleck (2025)**, *Optimizing Temperature for Language Models with Multi-Sample Inference*, [arXiv 2502.05234](https://arxiv.org/abs/2502.05234). They choose a sampling temperature from the turning point of the entropy curve, found by a temperature sweep. The melting temperature is a different point on a related curve and comes from one forward pass, and comparing the two directly has not been done yet.
+
+The closed form $T_\mathrm{melt} = \Delta/(\log V + c)$ and its test across 12 models with vocabulary size controlled do not appear in any of them.
 
 ## Limitations
 
