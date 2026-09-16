@@ -31,9 +31,10 @@ generation that turned out to matter more (sections 7f to 7k).
 **Also holds.** Predictive entropy is exactly `S(T=1)` and varentropy is exactly `C(T=1)`,
 so the field's two standard scalars are thermodynamic quantities read at one arbitrary
 point, and all seven common baselines together score identically to those two alone.
-`C_max` is exactly scale-invariant with a known ceiling, and on the cleanest knowledge task
-it beats all seven baselines combined. Reading entropy at each item's own melting
-temperature is scale-invariant at no cost in accuracy.
+That identity is Reeb and Wolf (2015) Equation 24 and is cited as theirs in section 1.
+`C_max` is exactly scale-invariant with a known ceiling, which is their Corollary 10, and on
+the cleanest knowledge task it beats all seven baselines combined. Reading entropy at each
+item's own melting temperature is scale-invariant at no cost in accuracy.
 
 **Did not survive.** Discrete band structure in the spectrum. Top-k truncation raising the
 melting temperature. Separating paraphrase from meaning by temperature. Energy-gap
@@ -78,6 +79,8 @@ The proof is one line. Surprisal is `-log p_i = beta*E_i + log Z`, so its varian
 `beta^2 Var(E)`, which is the heat capacity. So the field's two favourite scalars are
 the entropy and the heat capacity of the token distribution, both read at the single
 arbitrary point `T=1`. The natural generalisation is to read the whole curve.
+
+**Attribution, added 16 September 2026.** This identity is published. Reeb and Wolf, *Tight bound on relative entropy by entropy difference*, IEEE Trans. Inf. Theory 61(3):1458, 2015, Section 2.2.2, Equation 24, states `C(T) = var(-log rho_T)` for any thermal state, and it should be cited. The numerical verification here is still worth keeping, because it confirms that the mapping from logits to energies is implemented correctly. Reading the whole curve is still what the rest of this document is about.
 
 Empirically this framing is not just cosmetic: on 3096 real questions, all seven
 standard baseline scalars together score exactly the same as `S(1)` and `C(1)` alone
@@ -180,6 +183,8 @@ states, `C_max = x*^2 u/(1+u)^2` at the peak condition of section 2, which is cl
 12.0 for the 1.5B model and 10.1 for the 0.5B, so real melting transitions are about 3x
 broader than an ideal two-level melt, and `C_max / 36.6` is a dimensionless sharpness in
 [0,1] sitting around 0.33.
+
+**Attribution, added 16 September 2026.** That ceiling is published, and it is more general than the ideal melt model. Reeb and Wolf (2015) Corollary 10 proves `C(T) <= log^2(d-1)/4 + 1` for **any** state on `d` dimensions, and their Theorem 8 shows that exactly the one-state-above-a-degenerate-bulk spectrum used above attains it. `C_max/N(V)` is therefore the fraction of a universal bound that a real distribution reaches. That statement is stronger than "about 3x broader than an ideal melt" and should replace it in any write-up. `PEAK_OCCUPANCY.md` carries the derivation and the 140-distribution test.
 
 Interpretation: a high `C_max` means the chosen token is cleanly separated from the
 vocabulary bulk and the model releases its uncertainty over a narrow temperature range.
@@ -878,7 +883,8 @@ are reported above.
 1. ~~More models, and models from different vocabulary sizes.~~ **Done, section 7g and 7h.**
    12 models, 976x range, law confirmed.
 2. `C_max` still deserves its own study. It is scale-free, it has a known ceiling near
-   `(log V)^2/4`, and on the clean obscurity task it beat every standard scalar. Across the
+   `(log V)^2/4` (Reeb and Wolf 2015, Corollary 10), and on the clean obscurity task it beat
+   every standard scalar. Across the
    seven pretrained models the normalised sharpness `4 C_max/(log V)^2` ranges from 0.210
    (BLOOMZ) to 0.326 (SmolLM2), which is suggestive of a link to model quality but is
    confounded by multilinguality and has n=7. That is the experiment to run.
