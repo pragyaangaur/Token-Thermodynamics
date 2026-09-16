@@ -1,11 +1,12 @@
-# The melting peak is not a 50–50 handoff
+# The melting peak sits well short of a 50–50 handoff
 
-This is a new derivation and falsification produced during the validation audit on 5 September
-2026. The exact mathematics is a consequence of the textbook two-level Schottky model; the
-application and 140-distribution measurement appear absent from the LLM literature searched for
-this audit.
+Written during the validation audit on 5 September 2026. **Corrected on 16 September 2026.**
 
-## Exact prediction of the ideal model
+The original version of this file called the two laws below a new derivation. Both are in fact a rederivation of Theorem 8 and Corollary 10 of Reeb and Wolf, *Tight bound on relative entropy by entropy difference*, IEEE Trans. Inf. Theory 61(3):1458, 2015 (arXiv 1304.0036). The details of the overlap are in `NOVELTY.md`. In short, their maximum-surprisal-variance state is one large eigenvalue above a degenerate bulk, and their optimality condition becomes `x* = 2(1+u)/(1-u)` under the substitution `d-1 = V` and `r = u/(1+u)`. Their bound `log^2(d-1)/4 + 1` is the `C_max` expression below, and at `V = 151936` the two give 36.58 and 36.59.
+
+The measurement on 140 real distributions still stands, and it is the part worth keeping. Now that the ideal model has a name, the measurement also has a sharper meaning: real next-token distributions sit far below a rigorous universal bound on heat capacity.
+
+## Exact prediction of the ideal model, which is the Reeb and Wolf extremal state
 
 For one top token and `V` degenerate bulk tokens at gap `Delta`, write
 
@@ -28,9 +29,7 @@ p_top(T_melt) = 1/(1 + u) = 1/2 + 1/x*
 C_max = x*^2 u/(1 + u)^2 = (x*^2 - 4)/4.
 ```
 
-The second expression is the exact version of the repository's approximate `(log V)^2/4`
-ceiling. The first says the maximum response occurs *before* an equal probability-mass handoff. For
-`V = 151936`, `x* = 12.26`, so the ideal model predicts `p_top = 0.5816` at melting.
+The second expression is the exact version of the repository's approximate `(log V)^2/4` ceiling, and it is Reeb and Wolf's `N(d)`, the largest heat capacity any state on `d` dimensions can have. The first says the maximum response occurs *before* an equal probability-mass handoff, and it is their `1 - r_d = 1/2 + 1/log(d-1) + O(1/log^2 d)`. For `V = 151936`, `x* = 12.26`, so the ideal model predicts `p_top = 0.5816` at melting.
 
 ## The prediction fails cleanly on real logits
 
@@ -61,16 +60,16 @@ already moved through many intermediate logit levels by the time global energy v
 That explains both observations already in the repository: real `C_max` is far below the ideal
 ceiling, and discrete band structure is rarely resolved.
 
-This suggests a new scale-free shape statistic:
+Reading it against Reeb and Wolf makes the statement precise. Their extremal state maximises surprisal variance over every state of the same dimension. A real logit spectrum sitting at `p_top = 0.106` instead of `0.58` therefore measures how far a language model's next-token distribution is from the maximum-fluctuation state its vocabulary allows.
+
+This gives two scale-free shape statistics:
 
 ```text
-m = p_max(T_melt).
+m = p_max(T_melt)
+f = C_max / N(V),  with N(V) = log^2(V)/4 + 1 from Reeb and Wolf Corollary 10.
 ```
 
-Global logit rescaling moves `T_melt` by the same factor and leaves `m` unchanged. Unlike `C_max`,
-`m` has a direct sampling interpretation: the probability still held by the modal token when the
-distribution's energy fluctuations peak. Whether `m` predicts correctness or generation-quality
-collapse is untested; that is the next falsifiable experiment, not a claim made here.
+Global logit rescaling moves `T_melt` by the same factor and leaves both unchanged. `m` has a direct sampling interpretation, which is the probability still held by the modal token when the distribution's energy fluctuations peak. `f` is the fraction of the universal bound that the distribution actually reaches. It improves on the repository's earlier normalised sharpness, because its denominator is a proven bound where the old one was an approximation. Whether either statistic predicts correctness or generation-quality collapse is untested. That is the next falsifiable experiment, and this file makes no claim about it.
 
 Raw measurements are in `data/peak_occupancy.json`; the generating code is
 `src/peak_occupancy.py`.
