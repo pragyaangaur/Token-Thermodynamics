@@ -782,6 +782,12 @@ even though the absolute numbers fall.
 **Caveats.** 16 questions per condition, one model, one clustering threshold. Section 7i's
 sensitivity analysis applies here too and I have not repeated it for these numbers.
 
+**Correction, 21 September 2026.** The sensitivity analysis has now been run, in section
+7n, and the headline of this subsection does not survive it. Forking the first two tokens
+matches full semantic entropy only near the threshold used here, and the expensive method
+wins at four of six thresholds. The cost saving is real and the parity is withdrawn. The
+negative result about plain token entropy is threshold-free and stands unchanged.
+
 ### What this adds up to
 
 The physics did not produce the useful method here. The useful method came from a
@@ -950,6 +956,72 @@ show is produced by spectral structure the two-band model does not have.
 
 Raw measurements are in `data/turning_point.json` and the code is `src/turning_point.py`.
 
+## 7n. The clustering threshold partly overturns section 7k, the same way it overturned 7i
+
+Run on 21 September 2026. This is item 6 of section 9, and the second bullet of the
+README's limitations. Section 7i swept the embedding-similarity threshold across six values
+and one headline number did not survive. Section 7k was run at the single threshold 0.80
+and the check was never repeated, which I flagged at the time. It is repeated now.
+
+The original run saved only the clustered summaries, so the strings had to be generated
+again. `src/ffh_texts.py` regenerates all 48 questions and keeps every raw string, and
+`src/ffh_thr.py` reclusters them at six thresholds without loading the language model. The
+sampling seed is fixed at 0 and differs from the original run, so the sampled numbers move
+a little and the deterministic ones do not. At threshold 0.80 the fork semantic entropies
+reproduce exactly (0.021, 0.097, 0.431) and the token entropies reproduce exactly (0.736,
+0.327, 1.015), while the sampled-answer semantic entropies come out 0.044, 0.741 and 1.741
+against the original 0.029, 0.842 and 1.437. A reference number that moves by 0.1 to 0.3
+nats on a reseed is itself a warning about 16 questions and 16 samples.
+
+### Three-way mean AUROC across the sweep
+
+| method | generated tokens | 0.65 | 0.75 | **0.80** | 0.85 | 0.90 | 0.95 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| sampled semantic entropy | 704 | 0.801 | **0.858** | **0.880** | **0.878** | **0.820** | 0.614 |
+| fork position 0 only | 224 | 0.753 | 0.799 | 0.811 | 0.757 | 0.725 | **0.712** |
+| fork positions 0 to 1 | 448 | 0.822 | 0.846 | 0.854 | 0.764 | 0.667 | 0.660 |
+| fork positions 0 to 2 | 672 | **0.851** | 0.847 | 0.839 | 0.694 | 0.672 | 0.678 |
+| plain token entropy, pos 0 | 0 | 0.706 | 0.706 | 0.706 | 0.706 | 0.706 | 0.706 |
+| plain token entropy, pos 0-2 | 0 | 0.694 | 0.694 | 0.694 | 0.694 | 0.694 | 0.694 |
+
+### What has to be withdrawn
+
+**Section 7k's headline is a property of the threshold, not of the method.** It read
+"forking the first two tokens matches full semantic entropy on the three-way mean (0.854
+versus 0.849) at 1.6x lower cost". Across the sweep the expensive method wins outright at
+four of the six thresholds, and the cheap one wins only at the two extremes, once when the
+clustering is so loose that everything merges and once when it is so strict that nothing
+does. The tie at 0.80 was real and it was a coincidence. The cost saving stands and the
+parity does not, so the claim is withdrawn.
+
+Section 7l had already reported that the forking detector failed to replicate on
+Qwen2.5-0.5B. This says it does not hold on the first model either, outside a narrow band
+of threshold values. The two negatives agree, and together they close the method.
+
+**Every clustered AUROC in the section moves far more than I expected.** The largest single
+swing is sampled semantic entropy on KNOWN versus OBSCURE, the clean comparison with no
+invented names, which runs from 0.562 at threshold 0.65 to 0.914 at 0.85 and back to 0.645
+at 0.95. The reported value of 0.820 sits in the middle of a range that covers chance at
+one end. Any statement of the form "semantic entropy reaches X on this task" is a statement
+about the threshold as much as about the method, and section 7k did not say so.
+
+### What survives, and it is the part that matters
+
+**Plain token entropy is threshold-free, because it involves no clustering, so its numbers
+do not move at all.** Position 0 stays at 0.706 on the three-way mean and at 0.523 on
+KNOWN versus OBSCURE across all six thresholds. The central negative result of section 7k,
+that plain token entropy is at chance on the clean comparison, is therefore the most robust
+number in the whole section, and it is the only one the sweep cannot touch.
+
+That also produces a result I did not expect. At threshold 0.95 sampled semantic entropy
+falls to 0.614 on the three-way mean, below plain token entropy's 0.706. A clustering
+method badly enough tuned loses to the single forward pass it was introduced to beat. This
+is a statement about tuning and not about semantic entropy, and it is a reason to report
+the threshold sweep rather than a point estimate.
+
+Raw per-threshold records are in `data/ffh_thr.json`, the regenerated strings are in
+`data/ffh_texts_1p5b.json`, and the code is `src/ffh_texts.py` and `src/ffh_thr.py`.
+
 ## 8. Methods
 
 - Models: Qwen2.5-1.5B-Instruct and Qwen2.5-0.5B-Instruct, float32 on Apple M4 (MPS).
@@ -1004,10 +1076,10 @@ New items, in priority order:
    7j and 7k rest on 12 to 30 questions each and mostly one model. The effects are large,
    but the sample sizes are small and I would not defend the second decimal place of any of
    them.
-6. **Repeat the threshold sensitivity analysis for section 7k.** Section 7i showed the
-   clustering threshold moves the absolute numbers a lot while preserving the ordering. I
-   did not repeat that check for the detection results, and it should be done before anyone
-   relies on them.
+6. ~~Repeat the threshold sensitivity analysis for section 7k.~~ **Done, section 7n.**
+   The ordering was not preserved. The cheap forking detector matches the expensive method
+   only near the threshold originally used, so that claim is withdrawn. The negative result
+   about plain token entropy involves no clustering and does not move.
 7. **Test the first-token forking detector against the published cheap methods.** Semantic
    Entropy Probes achieve a larger cost saving by reading hidden states. A head-to-head on
    the same data would say whether forking adds anything or is simply a worse route to the

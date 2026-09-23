@@ -150,8 +150,8 @@ and honestly theirs is the more practical method.
 | 16 | 96.7% of top candidate first tokens lead to a different answer on factual questions | **Novel measurement**, and still the result I am most confident is new. |
 | 17 | Position-resolved meaning share, monotone decreasing, entropy rising | **Novel measurement.** Semantic Entropy Probes look at positions but for a different purpose. |
 | 18 | Spearman(renormalised top-8 entropy, meaning share) = −0.230; its top-quintile positions have mean meaning share 0.0000 | **Novel measurement.** The direction is folklore; the scoped number is not published anywhere I can find. |
-| 19 | Forking only the first 1 to 2 tokens matches full semantic entropy at 1.6x lower cost | **Novel method**, though a small and lightly-tested one (16 questions per condition). Semantic Entropy Probes achieve a bigger cost saving by a different route. |
-| 20 | Plain token entropy is at chance (0.523) separating known from obscure free-form questions | **Novel measurement**, and the most useful negative in the project. |
+| 19 | Forking only the first 1 to 2 tokens matches full semantic entropy at 1.6x lower cost | **Withdrawn 21 September 2026.** The clustering-threshold sweep in FINDINGS.md section 7n shows the parity holds only near the threshold originally used, and that the expensive method wins at four of the six thresholds. The cost saving is real and the parity is not. Section 7l had already found it did not replicate on a second model. |
+| 20 | Plain token entropy is at chance (0.523) separating known from obscure free-form questions | **Novel measurement**, and the most useful negative in the project. Strengthened 21 September 2026: it involves no clustering, so it is the only number in that section the threshold sweep leaves untouched. |
 | 21 | The melting law confirmed across 12 models spanning 976x in vocabulary | **Novel.** The Schottky peak condition is textbook physics from the 1930s; applying it to token distributions and testing it across models, including five trained specifically to vary V, does not appear to have been done. |
 | 22 | Measuring the logit gap to the mean is unsafe across model families | **Novel as a stated warning**, with a concrete demonstration (a 9.9x spread and the wrong sign, fixed by using the mode). Several published measures aggregate logits by mean. |
 | 24 | The entropy turning point lies strictly below the melting temperature, for any distribution | **The mathematics is elementary** and probably folklore in thermodynamics; I found no statement of it. **Novel as applied here**, because it explains the published factor of two to three and turns a one-forward-pass quantity into an estimate of a temperature that is currently found by sweeping. |
@@ -164,7 +164,8 @@ Ranked by how confident I am that each is both new and worth something:
 
 1. The quantified phrasing-versus-meaning split and its position profile (#15 to #18, #20).
    The concept is old, the numbers are new, and they say something specific about when the
-   expensive methods earn their cost.
+   expensive methods earn their cost. The absolute values depend heavily on the clustering
+   threshold, so the ones to lean on are the threshold-free ones in #20.
 2. The melting law and its cross-model confirmation (#4, #5, #21).
 3. The mean-versus-mode warning (#22), which is small and immediately actionable.
 4. `C_max` as a scale-free knowledge indicator (#6, #7), which needs more models and should now be reported as a fraction of the Reeb and Wolf bound.

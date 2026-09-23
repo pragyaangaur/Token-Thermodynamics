@@ -4,7 +4,7 @@
 
 Softmax sampling in a language model is exactly the Boltzmann distribution of statistical mechanics. This repository builds the rest of the thermodynamics on top of that identity and measures what it buys for hallucination detection.
 
-Most of the ideas here were wrong, and the experiments say so. Seven hypotheses were falsified, including one method that worked on the first model, failed to replicate on the second, and has been withdrawn. The negative results are kept in full because they are the most informative part.
+Most of the ideas here were wrong, and the experiments say so. Seven hypotheses were falsified, including one method that worked on the first model, failed to replicate on the second, and has now also failed a clustering-threshold sweep on the first model. It is withdrawn. The negative results are kept in full because they are the most informative part.
 
 Everything runs on a laptop. The headline result reproduces in about one second with no GPU and no model download.
 
@@ -65,7 +65,7 @@ The closed form $T_\mathrm{melt} = \Delta/(\log V + c)$ and its test across 12 m
 These matter, and they are stated here rather than buried.
 
 - The free-form results rest on 12 to 30 questions per condition and at most 2 models, both from the Qwen family. The effects are large and the sample sizes are small.
-- Meaning clustering uses sentence embeddings at one similarity threshold. A sensitivity sweep across six thresholds overturned one of the headline numbers, and that correction is recorded in FINDINGS.md section 7i. The same sweep has not been repeated for the detection results in section 7k.
+- Meaning clustering uses sentence embeddings at one similarity threshold, and this matters more than I expected. A sensitivity sweep across six thresholds overturned one headline number in FINDINGS.md section 7i and a second one in section 7n. Every clustered AUROC in the project should be read as a point on a curve rather than as a value. The detector that scored 0.820 on the clean comparison ranges from 0.562 to 0.914 across the six thresholds.
 - The reference semantic entropy is the cheap string-clustering version, not bidirectional entailment. The comparison against it on short factual questions may therefore be unfair to the published method.
 - The fabricated-entity conditions use invented names, so any comparison against them partly reads orthography. The clean comparisons use real entities split by obscurity.
 - Everything is measured on the first answer token unless stated otherwise, which section 7f shows is a regime-dependent choice.
@@ -99,6 +99,8 @@ src/freeform_degeneracy.py    phrasing versus meaning, free-form against short f
 src/where_meaning.py          position-resolved split of entropy into phrasing and meaning
 src/report.py                 detector evaluation, cross-validation and paired bootstraps
 src/turning_point.py          entropy turning point against the melting temperature
+src/ffh_texts.py              regenerates the free-form detection run keeping raw strings
+src/ffh_thr.py                reclusters that run at six thresholds, no model needed
 ```
 
 ## Regenerating from scratch
