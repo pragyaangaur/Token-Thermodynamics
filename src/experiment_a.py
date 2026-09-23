@@ -522,6 +522,9 @@ def main():
     ap.add_argument("--eager", action="store_true", help="vLLM enforce_eager")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--phases", default="melt,turn,grid,score")
+    ap.add_argument("--only", default="",
+                    help="comma list of settings to generate, such as T0.1,T0.2 or "
+                         "melt_task, so a long run can be split across sessions")
     a = ap.parse_args()
     if a.n_problems is None:
         a.n_problems = 200 if a.task == "math" else 100
@@ -546,8 +549,8 @@ def main():
     if "turn" in phases and not os.path.exists(turn_path):
         gen = VLLM(a) if a.backend == "vllm" else HFGen(a)
     turn = phase_turn(a, rows, melt, gen, turn_path)
-    print(f"turn: t*={turn['t_star']:.2f}  T_pred={turn['T_pred']:.2f}  mode={turn['mode']}",
-          flush=True)
+    print(f"turn: t*={turn['t_star']:.2f}  T_pred={turn['T_pred']:.2f}  mode={turn['mode']}  "
+          f"T_melt/t* = {np.median(Tm) / turn['t_star']:.3f}", flush=True)
 
     grid = np.round(np.arange(0.1, a.t_max, 0.1), 2)
     settings = {f"T{t:.1f}": [float(t)] * len(rows) for t in grid}
@@ -557,10 +560,25 @@ def main():
     settings["melt_task"] = [round(float(np.median(Tm)) / RATIO, 3)] * len(rows)
     settings["melt_question"] = [round(float(t) / RATIO, 3) for t in Tm]
     if "grid" in phases:
-        if gen is None:
+        todo = settings
+        if a.only:
+            keep = set(a.only.split(","))
+            unknown = keep - set(settings)
+            if unknown:
+                sys.exit(f"unknown settings in --only: {sorted(unknown)}; "
+                         f"choose from {list(settings)}")
+            todo = {k: v for k, v in settings.items() if k in keep}
+        todo = {k: v for k, v in todo.items()
+                if not os.path.exists(os.path.join(outdir, f"gen_{k}.json"))}
+        if todo and gen is None:
             gen = VLLM(a) if a.backend == "vllm" else HFGen(a)
-        phase_grid(a, rows, settings, gen, outdir)
+        phase_grid(a, rows, todo, gen, outdir)
     if "score" in phases:
+        missing = [l for l in settings
+                   if not os.path.exists(os.path.join(outdir, f"gen_{l}.json"))]
+        if missing:
+            print(f"not scoring yet, settings still to generate: {missing}")
+            return
         report(phase_score(a, rows, melt, turn, settings, outdir))
 
 

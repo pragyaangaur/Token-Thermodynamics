@@ -30,3 +30,6 @@ paper/
 
 # Local editor and tooling config
 .claude/
+
+# Result archives downloaded from Kaggle
+results*.zip
