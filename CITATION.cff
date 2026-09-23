@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code or its measurements, please cite it as below."
+title: "Token Thermodynamics: temperature spectroscopy of a language model's next-token distribution"
+authors:
+  - family-names: Gaur
+    given-names: Pragyaan
+repository-code: "https://github.com/pragyaangaur/Token-Thermodynamics"
+license: MIT
+date-released: "2026-09-23"
+keywords:
+  - language models
+  - sampling temperature
+  - statistical mechanics
+  - heat capacity
+  - uncertainty
+  - hallucination detection
+abstract: >-
+  Softmax sampling in a language model is exactly the Boltzmann distribution. This
+  repository computes the resulting thermodynamics of the next-token distribution from
+  one forward pass, gives a closed form for the heat-capacity peak in terms of the logit
+  gap and the vocabulary size, tests it across 12 models, and records seven falsified
+  hypotheses alongside the results that survived.

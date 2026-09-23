@@ -103,6 +103,7 @@ src/ffh_texts.py              regenerates the free-form detection run keeping ra
 src/ffh_thr.py                reclusters that run at six thresholds, no model needed
 src/experiment_a.py           samples at T_melt/1.141 against TURN, needs a GPU
 notebooks/                    Kaggle notebook that runs experiment_a.py
+scripts/make_archive.sh       builds a release zip from git, for archiving
 ```
 
 ## Regenerating from scratch
