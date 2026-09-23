@@ -1,0 +1,20 @@
+{
+  "title": "Token Thermodynamics: temperature spectroscopy of a language model's next-token distribution",
+  "upload_type": "software",
+  "description": "<p>Softmax sampling in a language model is exactly the Boltzmann distribution. This repository computes the resulting thermodynamics of the next-token distribution from one forward pass, gives a closed form for the heat-capacity peak in terms of the logit gap and the vocabulary size, tests it across 12 models spanning a 976-fold range of vocabulary size, shows that entropy turning points lie on the rising flank of the heat capacity, and records the falsified hypotheses alongside the results that survived.</p>",
+  "creators": [
+    {
+      "name": "Gaur, Pragyaan"
+    }
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "keywords": [
+    "language models",
+    "sampling temperature",
+    "statistical mechanics",
+    "heat capacity",
+    "uncertainty estimation",
+    "hallucination detection"
+  ]
+}
