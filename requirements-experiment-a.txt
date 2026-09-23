@@ -1,0 +1,6 @@
+# Experiment A, src/experiment_a.py. Needs a GPU, and is meant for a Kaggle notebook.
+# vLLM brings its own torch and transformers. sympy and pylatexenc are for TURN's MATH grader.
+-r requirements.txt
+vllm
+sympy
+pylatexenc

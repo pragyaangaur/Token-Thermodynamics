@@ -101,6 +101,8 @@ src/report.py                 detector evaluation, cross-validation and paired b
 src/turning_point.py          entropy turning point against the melting temperature
 src/ffh_texts.py              regenerates the free-form detection run keeping raw strings
 src/ffh_thr.py                reclusters that run at six thresholds, no model needed
+src/experiment_a.py           samples at T_melt/1.141 against TURN, needs a GPU
+notebooks/                    Kaggle notebook that runs experiment_a.py
 ```
 
 ## Regenerating from scratch
