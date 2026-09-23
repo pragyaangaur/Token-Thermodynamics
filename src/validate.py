@@ -89,34 +89,58 @@ check("max absolute entropy error", np.max(np.abs(exact["S"] - compressed["S"]))
 check("max absolute heat-capacity error", np.max(np.abs(exact["C"] - compressed["C"])), 2e-5)
 
 
-print("\n== 4. the entropy turning point lies below the melting temperature ==")
+print("\n== 4. every entropy turning point sits where the heat capacity is rising ==")
 # Because S'(T) = C(T)/T, each natural inflection condition reads T C'/C = R with R > 0,
-# which forces C'(T) > 0. The melting temperature is where C'(T) = 0, so the turning point
-# is strictly below it for every distribution. FINDINGS.md section 7m.
-from turning_point import turning_points
+# so C'(T) > 0 at every turning point. This check finds every inflection on the whole
+# temperature range from exact curves, without looking at where the peak is, and tests
+# the sign of C' there. It can fail. The consequence T_turn < T_melt follows when C(T)
+# has a single peak, and two-band spectra are included to show where it does not.
+# FINDINGS.md section 7m.
+from thermo import curves as exact_curves
 
 rng = np.random.default_rng(11)
-violations, checked = 0, 0
-for trial in range(60):
+temps = np.exp(np.linspace(np.log(0.02), np.log(50.0), 4000))
+betas = np.sort(1.0 / temps)
+violations, checked, single_peak, below_when_single = 0, 0, 0, 0
+for trial in range(75):
     size = int(rng.integers(50, 3000))
-    kind = trial % 4
+    kind = trial % 5
     if kind == 0:
         spectrum = rng.normal(0, rng.uniform(0.3, 6.0), size)
     elif kind == 1:
         spectrum = rng.gumbel(0, rng.uniform(0.5, 4.0), size)
     elif kind == 2:
         spectrum = np.concatenate([[rng.uniform(4, 20)], np.zeros(size - 1)])
-    else:
+    elif kind == 3:
         spectrum = -np.sort(rng.exponential(rng.uniform(0.5, 5.0), size))
-    result = turning_points(spectrum, K=min(1024, size), NB=256)
-    for convention in ("S_vs_T", "logS_vs_logT", "logS_vs_T"):
-        temperature = result[convention]
-        if temperature is None:
-            continue
-        checked += 1
-        if not temperature < result["Tmelt"] * (1 + 1e-9):
-            violations += 1
-check(f"violations of T_turn < T_melt over {checked} cases", violations, 0)
+    else:
+        # a few near-degenerate competitors, then a distant bulk: two heat-capacity peaks
+        spectrum = np.concatenate([[0.0], np.full(3, -rng.uniform(1, 3)),
+                                   np.full(size - 4, -rng.uniform(12, 25))])
+    c = exact_curves(spectrum, betas)
+    order = np.argsort(c["T"])
+    T, S, C = c["T"][order], c["S"][order], c["C"][order]
+    dC = np.gradient(C, T)
+    peaks = np.where((C[1:-1] > C[:-2]) & (C[1:-1] > C[2:]) & (C[1:-1] > 1e-6 * C.max()))[0]
+    t_melt = T[np.argmax(C)]
+    with np.errstate(divide="ignore", invalid="ignore"):   # S is exactly 0 in the cold tail
+        forms = ((T, S), (np.log(T), np.log(S)), (T, np.log(S)))
+        seconds = [np.gradient(np.gradient(y, x), x) for x, y in forms]
+    for second in seconds:
+        ok = np.isfinite(second) & (S > 1e-8)
+        idx = np.where(ok[:-1] & ok[1:] & (np.sign(second[:-1]) * np.sign(second[1:]) < 0))[0]
+        for j in idx:
+            if C[j] < 1e-8 * C.max():
+                continue   # numerically empty tail, no curvature to speak of
+            checked += 1
+            if not (dC[j] > 0 or dC[j + 1] > 0):
+                violations += 1
+            if len(peaks) == 1:
+                single_peak += 1
+                below_when_single += int(T[j] < t_melt)
+check(f"turning points with C' <= 0, out of {checked}", violations, 0)
+check(f"single-peak turning points not below T_melt, out of {single_peak}",
+      single_peak - below_when_single, 0)
 
 
 print("\nAll validation checks passed.")

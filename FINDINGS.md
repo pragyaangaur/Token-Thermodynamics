@@ -882,9 +882,9 @@ log S vs T,        d2/dT2 = 0        ->   T C'/C = 1 + C/S
 `C` and `S` are both strictly positive for any distribution that is not a point mass, so
 the right-hand side is strictly positive in every case. That forces `C'(T) > 0`, which
 means the heat capacity is still rising at the turning point. The melting temperature is
-the place where `C'(T) = 0`. So every one of these turning points lies strictly below the
-melting temperature, for every distribution, with no assumption about the shape of the
-logit spectrum and no free parameter.
+the place where `C'(T) = 0`. So every one of these turning points lies on a rising flank of the heat capacity, for every distribution, with no assumption about the shape of the logit spectrum and no free parameter. When `C(T)` has a single peak, which is the usual case for real next-token distributions, that puts every turning point strictly below the melting temperature.
+
+**Correction, 23 September 2026.** This section first said the turning point lies below the melting temperature for every distribution, and the check in `src/validate.py` reported no violations. Both overstated it. The argument proves the rising-flank statement. A distribution whose heat capacity has two peaks, which about 10% of real items do (section 6), could in principle have a turning point on the flank of the smaller, hotter peak and so above the global maximum. The old check could not have caught that, because `turning_points()` only searches below the peak. `src/validate.py` now finds every inflection over the whole temperature range from exact curves and tests the sign of `C'` at each one. It finds 208 turning points with `C'` positive at every one. As a control, the same test flags 110 of 227 inflections of `C` itself. On single-peak spectra, all 106 turning points lie below `T_melt`. On a family of two-peak spectra, none of 51 turning points lies above the global peak, but this is observed and not guaranteed.
 
 The argument is elementary, and a physicist would call it folklore about the rising flank
 of a Schottky anomaly. What it settles here is a specific question about language models:
@@ -1152,7 +1152,8 @@ Added 16 September 2026, after reading the closest prior work listed in `NOVELTY
 9. ~~Compare `T_melt` against the two published critical temperatures.~~ **Partly done,
    section 7m.** The comparison against Du, Yang and Welleck's entropy turning point is
    run, and the ordering turns out to be forced rather than empirical: the turning point
-   lies strictly below the melting temperature for every distribution, under all three
+   lies on a rising flank of the heat capacity for every distribution, and so below the
+   melting temperature whenever the heat capacity has a single peak, under all three
    natural conventions. On seven models the ratio is 1.141 and its per-model medians span
    only 1.063x on 20 generic prompts. On MATH prompts it drops to about 1.03, so the
    constant depends on the text. The Arnold et al. comparison is still not run, because their

@@ -17,9 +17,11 @@ inflection conditions all reduce to the same shape:
 C and S are both strictly positive for any non-degenerate distribution, so the
 right-hand side is strictly positive in all three cases, which forces C'(T) > 0.
 The heat capacity is still rising there. The melting temperature is where
-C'(T) = 0. So every one of these turning points lies strictly below the
-melting temperature, for every distribution, with no assumption about the
-logit spectrum.
+C'(T) = 0. So every one of these turning points lies on a rising flank of
+C, with no assumption about the logit spectrum, and below the melting
+temperature whenever C has a single peak. turning_points() only searches below
+the peak, so its selftest cannot detect a violation. src/validate.py has the
+check that can.
 
 That is the ordering. The size of the gap is an empirical question, and this
 script measures it on the seven cached pretrained models.
