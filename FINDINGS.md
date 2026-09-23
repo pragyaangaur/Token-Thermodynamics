@@ -846,6 +846,110 @@ smaller model.
 This is the clearest practical conclusion in the project, and it survived the replication
 that killed my own proposed method.
 
+## 7m. The entropy turning point sits below the melting temperature, and it has to
+
+This is item 9 of section 9, run on 21 September 2026. Du, Yang and Welleck (arXiv
+2502.05234) pick a sampling temperature at the "entropy turning point", the temperature
+where the log entropy curve stops being concave and starts being convex. They find it by
+sweeping temperatures and generating samples at each one, and sampling there beats
+fixed-temperature baselines on MATH and MBPP across 13 models. Arnold et al. (arXiv
+2405.17088) report a high-temperature transition at `T_2* = 0.5` for Pythia 70M from a
+sequence-level heat capacity that costs 20,480 generations per temperature point. My
+measured melting temperatures are 1.0 to 1.5, so both published critical temperatures sit
+below mine, and until now I had no account of why.
+
+There is an exact account, and it is four lines.
+
+### The ordering is forced
+
+For a fixed logit vector, `S'(T) = C(T)/T`. Substituting that into each of the three
+natural ways of writing an inflection of the entropy curve gives the same shape of
+condition:
+
+```text
+S vs T,            S'' = 0           ->   T C'/C = 1
+log S vs log T,    d2/d(log T)2 = 0  ->   T C'/C = C/S
+log S vs T,        d2/dT2 = 0        ->   T C'/C = 1 + C/S
+```
+
+`C` and `S` are both strictly positive for any distribution that is not a point mass, so
+the right-hand side is strictly positive in every case. That forces `C'(T) > 0`, which
+means the heat capacity is still rising at the turning point. The melting temperature is
+the place where `C'(T) = 0`. So every one of these turning points lies strictly below the
+melting temperature, for every distribution, with no assumption about the shape of the
+logit spectrum and no free parameter.
+
+The argument is elementary, and a physicist would call it folklore about the rising flank
+of a Schottky anomaly. What it settles here is a specific question about language models:
+the factor of two to three between my melting temperature and the published critical
+temperatures has the sign it is required to have, and no measurement was going to remove
+it.
+
+`python src/turning_point.py --selftest-only` checks the ordering on 200 synthetic spectra
+drawn from four families, Gaussian, Gumbel, ideal two-band and sorted exponential, at
+vocabulary sizes from 50 to 4000. Across 600 conventions-by-spectra there are no
+violations.
+
+### How big the gap is on real logits
+
+Seven pretrained models, the same 20 prompts as section 7g, 140 distributions. Every
+temperature is a median over the 20 prompts.
+
+| Model | V | `T_melt` | `S''=0` | ratio | `(log S)''` in `log T` | ratio | `(log S)''` in `T` | ratio |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| GPT-2 | 50257 | 1.038 | 0.868 | 1.172 | 0.771 | 1.271 | 0.363 | 3.05 |
+| Pythia-160M | 50304 | 1.072 | 0.924 | 1.133 | 0.746 | 1.356 | 0.072 | 15.77 |
+| SmolLM2-360M | 49152 | 1.223 | 0.982 | 1.102 | 0.800 | 1.439 | 0.050 | 25.48 |
+| OPT-125M | 50272 | 1.176 | 0.998 | 1.167 | 0.917 | 1.290 | 0.385 | 2.47 |
+| Qwen2.5-0.5B | 151936 | 1.416 | 1.210 | 1.113 | 0.988 | 1.283 | 0.047 | 26.04 |
+| Qwen2.5-1.5B | 151936 | 1.444 | 1.199 | 1.142 | 0.942 | 1.403 | 0.047 | 27.61 |
+| BLOOMZ-560M | 250880 | 1.143 | 0.950 | 1.144 | 0.785 | 1.447 | 0.131 | 9.13 |
+
+Across all 140 distributions the ratio `T_melt/T_turn` has median 1.141 for the first
+convention and 1.339 for the second, and there are no violations of the ordering in either.
+
+The useful number is the last line of each block. For the first convention the per-model
+medians span only **1.063x** across seven model families and a 5.1x range of vocabulary
+size, and for the second they span 1.139x. A ratio that stable means the melting law
+carries over. `T_melt = Delta/(log V + c)` comes from one forward pass, so dividing it by a
+constant near 1.14 gives the entropy turning point without the temperature sweep that
+currently locates it. Whether the resulting temperature is as good to sample at is not
+tested here, and that is the experiment that would matter.
+
+### The third convention does not survive a change of model
+
+The third row is the one Du, Yang and Welleck actually use, an inflection of `log H`
+against `T` rather than against `log T`. Applied to a single next-token distribution it is
+unusable across models. Its per-model medians span **11.186x**, from 2.47 on OPT-125M to
+27.61 on Qwen2.5-1.5B, and individual prompts reach 450.
+
+The reason is the same one that runs through section 4. Mixing a logarithm of entropy with
+a linear temperature is not invariant under a global rescaling of the logits, because
+rescaling every logit by a factor moves `T` by that factor and leaves `S` alone. The first
+two conventions are invariant and the third is not. Their procedure works because their
+`H` is an average over many generated token positions, which smooths the curve, and
+because they never compare the raw turning point across model families. Anyone who does
+want to compare it across families should use the `log T` form.
+
+### Scope, stated plainly
+
+Their `H(t)` is the token-level entropy of the tokens a model actually generates at
+sampling temperature `t`, averaged over samples and positions. Mine is the entropy of one
+fixed next-token distribution reweighted at temperature `T`. These are the same object only
+at a single position with one sample, so this is the single-distribution analogue of their
+quantity and not their quantity. The ordering theorem is proved for the analogue. Whether
+it also holds for their sample-averaged curve is untested, and testing it needs their
+pipeline.
+
+The ideal melt model of `PEAK_OCCUPANCY.md` gives a closed form for the first convention,
+`x - 3 = 2xu/(1+u)` with `u = V exp(-x)`, which predicts a ratio of about 1.016 at
+`V = 49152`. The measured median is 1.141. The ideal model again locates the feature and
+gets the shape wrong, exactly as it did for `p_top`. For the second convention the ideal
+model has no root below the melting point at all, so the turning point that real logits
+show is produced by spectral structure the two-band model does not have.
+
+Raw measurements are in `data/turning_point.json` and the code is `src/turning_point.py`.
+
 ## 8. Methods
 
 - Models: Qwen2.5-1.5B-Instruct and Qwen2.5-0.5B-Instruct, float32 on Apple M4 (MPS).
@@ -915,4 +1019,20 @@ New items, in priority order:
 
 Added 16 September 2026, after reading the closest prior work listed in `NOVELTY.md`:
 
-9. **Compare `T_melt` against the two published critical temperatures.** Arnold et al. (arXiv 2405.17088) report a high-temperature transition at `T_2* = 0.5` for Pythia 70M, found from a sequence-level heat capacity that needs 20,480 generations per temperature point. Du, Yang and Welleck (arXiv 2502.05234) choose a sampling temperature at the turning point of `log H(T)`, found by a temperature sweep. `T_melt` comes from one forward pass. The measured `T_melt` values of 1.0 to 1.5 are currently a factor of two to three above `T_2*`, so the first step is to run both on the same model and prompts, starting with Pythia, and report the ratio and its spread across prompts. If `T_melt` tracks either critical point, it gives the melting law the practical use it does not yet have. If it does not, the ratio is still a result.
+9. ~~Compare `T_melt` against the two published critical temperatures.~~ **Partly done,
+   section 7m.** The comparison against Du, Yang and Welleck's entropy turning point is
+   run, and the ordering turns out to be forced rather than empirical: the turning point
+   lies strictly below the melting temperature for every distribution, under all three
+   natural conventions. On seven models the ratio is 1.141 and its per-model medians span
+   only 1.063x, which is tight enough that the closed form for `T_melt` gives the turning
+   point without a sweep. The Arnold et al. comparison is still not run, because their
+   sequence-level heat capacity needs 20,480 generations per temperature point.
+
+10. **Sample at `T_melt/1.14` and measure whether it is as good as the swept turning
+    point.** This is the experiment that would give the melting law a practical use.
+    Section 7m shows the two temperatures are related by a near-constant factor, and says
+    nothing about whether generating at the predicted one works. Du, Yang and Welleck
+    report gains on MATH and MBPP with majority voting and best-of-N across 13 models, so
+    the benchmark and the baseline both already exist. If sampling at the predicted
+    temperature matches the swept one, a temperature sweep is replaced by one forward
+    pass.

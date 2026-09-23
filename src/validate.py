@@ -89,4 +89,34 @@ check("max absolute entropy error", np.max(np.abs(exact["S"] - compressed["S"]))
 check("max absolute heat-capacity error", np.max(np.abs(exact["C"] - compressed["C"])), 2e-5)
 
 
+print("\n== 4. the entropy turning point lies below the melting temperature ==")
+# Because S'(T) = C(T)/T, each natural inflection condition reads T C'/C = R with R > 0,
+# which forces C'(T) > 0. The melting temperature is where C'(T) = 0, so the turning point
+# is strictly below it for every distribution. FINDINGS.md section 7m.
+from turning_point import turning_points
+
+rng = np.random.default_rng(11)
+violations, checked = 0, 0
+for trial in range(60):
+    size = int(rng.integers(50, 3000))
+    kind = trial % 4
+    if kind == 0:
+        spectrum = rng.normal(0, rng.uniform(0.3, 6.0), size)
+    elif kind == 1:
+        spectrum = rng.gumbel(0, rng.uniform(0.5, 4.0), size)
+    elif kind == 2:
+        spectrum = np.concatenate([[rng.uniform(4, 20)], np.zeros(size - 1)])
+    else:
+        spectrum = -np.sort(rng.exponential(rng.uniform(0.5, 5.0), size))
+    result = turning_points(spectrum, K=min(1024, size), NB=256)
+    for convention in ("S_vs_T", "logS_vs_logT", "logS_vs_T"):
+        temperature = result[convention]
+        if temperature is None:
+            continue
+        checked += 1
+        if not temperature < result["Tmelt"] * (1 + 1e-9):
+            violations += 1
+check(f"violations of T_turn < T_melt over {checked} cases", violations, 0)
+
+
 print("\nAll validation checks passed.")

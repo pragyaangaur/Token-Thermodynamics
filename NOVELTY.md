@@ -30,6 +30,18 @@ Their reference [110] is a Wolfram Community forum post by Sebastián Bahamondes
 
 Their critical point is an inflection of `log H` and mine is the maximum of `dS/dlog T`. These are different points on the same curve, so the comparison is well defined. They have no closed form and they need a sweep. This paper is useful because it supplies a practical downstream task, which the melting law does not yet have.
 
+**Run on 21 September 2026, in FINDINGS.md section 7m.** The relation turns out to be an
+identity rather than a measurement. Because `S'(T) = C(T)/T`, each of the three natural
+inflection conditions reduces to `T C'/C = R` with `R` strictly positive, which forces
+`C'(T) > 0` and puts every such turning point strictly below the heat capacity peak. The
+derivation is elementary and I would expect a physicist to call it folklore about the
+rising flank of a Schottky anomaly, so I am not claiming the mathematics. The new parts are
+that it settles the sign of a published discrepancy in language models, that the measured
+ratio is 1.141 with per-model medians spanning only 1.063x across seven families, and that
+their own convention, an inflection of `log H` against a linear `T`, is not invariant under
+a global rescaling of the logits and varies 11.2x across families. That last point is the
+same class of warning as the mean-versus-mode one in claim #22.
+
 **Semantic Energy: Detecting LLM Hallucination Beyond Entropy** (arXiv 2508.14496).
 This is the closest paper to my setup and I did not know about it when I started. It uses
 **the same mapping I use**, energy = negative logit, explicitly Boltzmann-inspired, with
@@ -142,6 +154,8 @@ and honestly theirs is the more practical method.
 | 20 | Plain token entropy is at chance (0.523) separating known from obscure free-form questions | **Novel measurement**, and the most useful negative in the project. |
 | 21 | The melting law confirmed across 12 models spanning 976x in vocabulary | **Novel.** The Schottky peak condition is textbook physics from the 1930s; applying it to token distributions and testing it across models, including five trained specifically to vary V, does not appear to have been done. |
 | 22 | Measuring the logit gap to the mean is unsafe across model families | **Novel as a stated warning**, with a concrete demonstration (a 9.9x spread and the wrong sign, fixed by using the mode). Several published measures aggregate logits by mean. |
+| 24 | The entropy turning point lies strictly below the melting temperature, for any distribution | **The mathematics is elementary** and probably folklore in thermodynamics; I found no statement of it. **Novel as applied here**, because it explains the published factor of two to three and turns a one-forward-pass quantity into an estimate of a temperature that is currently found by sweeping. |
+| 25 | The `log H` against linear `T` turning point is not scale invariant and spans 11.2x across model families | **Novel as a stated warning**, same class as #22. |
 | 23 | Meaning free energy correction to greedy decoding | **Not novel as an idea.** This is the mode-seeking problem that Minimum Bayes Risk decoding addresses. My contribution is only the negative measurement that the correction is worth 0.000 here. |
 
 ## Honest summary of the whole project
