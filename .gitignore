@@ -21,6 +21,10 @@ venv/
 # Personal outreach material, not for a public repository
 OUTREACH.md
 EMAILS.md
+# Personal planning notes and agent context, also private
+HANDOFF.md
+PAPER.md
+AGENTS.md
 
 # Local editor and tooling config
 .claude/
