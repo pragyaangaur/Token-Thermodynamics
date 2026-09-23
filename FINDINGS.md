@@ -916,11 +916,9 @@ convention and 1.339 for the second, and there are no violations of the ordering
 
 The useful number is the last line of each block. For the first convention the per-model
 medians span only **1.063x** across seven model families and a 5.1x range of vocabulary
-size, and for the second they span 1.139x. A ratio that stable means the melting law
-carries over. `T_melt = Delta/(log V + c)` comes from one forward pass, so dividing it by a
-constant near 1.14 gives the entropy turning point without the temperature sweep that
-currently locates it. Whether the resulting temperature is as good to sample at is not
-tested here, and that is the experiment that would matter.
+size, and for the second they span 1.139x. On these 20 prompts the ratio is stable across model families. `T_melt = Delta/(log V + c)` comes from one forward pass, so if the constant held everywhere, dividing by it would give the single-distribution turning point without a temperature sweep. Whether the resulting temperature is as good to sample at is not tested here, and that is the experiment that would matter.
+
+**Update, 23 September 2026. The constant depends on the text.** The same measurement on the 200 MATH problems used by Du, Yang and Welleck, with their four-shot prompt, gives a different ratio. T_melt was read at each of the first 32 positions of a greedy answer, 6400 distributions per model. The ratio for the first convention has median 1.025 on Qwen2.5-0.5B (IQR 1.019 to 1.038) and 1.028 on Qwen2.5-1.5B (IQR 1.020 to 1.043). On the 20 generic prompts above, the same two models gave 1.113 and 1.142. The ordering still holds everywhere, as it must. The ratio stays tight across families within one kind of text and moves between kinds of text, so a single constant of 1.14 cannot be carried from one domain to another. T_melt itself also rises on this text, to a median of 2.08 and 2.05. Dividing by 1.141 then predicts a sampling temperature near 1.8, which is above the whole range Du, Yang and Welleck search. The data is in `data/experiment_a_preflight.json`, and the sampling test is described in `EXPERIMENT_A.md`.
 
 ### The third convention does not survive a change of model
 
@@ -1096,8 +1094,8 @@ Added 16 September 2026, after reading the closest prior work listed in `NOVELTY
    run, and the ordering turns out to be forced rather than empirical: the turning point
    lies strictly below the melting temperature for every distribution, under all three
    natural conventions. On seven models the ratio is 1.141 and its per-model medians span
-   only 1.063x, which is tight enough that the closed form for `T_melt` gives the turning
-   point without a sweep. The Arnold et al. comparison is still not run, because their
+   only 1.063x on 20 generic prompts. On MATH prompts it drops to about 1.03, so the
+   constant depends on the text. The Arnold et al. comparison is still not run, because their
    sequence-level heat capacity needs 20,480 generations per temperature point.
 
 10. **Sample at `T_melt/1.14` and measure whether it is as good as the swept turning
@@ -1107,4 +1105,6 @@ Added 16 September 2026, after reading the closest prior work listed in `NOVELTY
     report gains on MATH and MBPP with majority voting and best-of-N across 13 models, so
     the benchmark and the baseline both already exist. If sampling at the predicted
     temperature matches the swept one, a temperature sweep is replaced by one forward
-    pass.
+    pass. The harness is `src/experiment_a.py` and the protocol is `EXPERIMENT_A.md`.
+    The update in section 7m makes a clean pass less likely, because the constant moves
+    with the text.
