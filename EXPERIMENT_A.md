@@ -54,7 +54,16 @@ The melt phase needs no GPU, so it was run on the two Qwen models already cached
 | Qwen2.5-0.5B-Instruct | 2.08 | 1.81 | 1.025 | 1.113 |
 | Qwen2.5-1.5B-Instruct | 2.05 | 1.80 | 1.028 | 1.142 |
 
-Two things follow, and both count against a clean pass. The predicted temperature is about 1.8, which is above TURN's whole grid and well above the 0.6 to 0.9 they report as good for general models. The ratio itself also depends on the text, so the constant 1.141 from generic prompts does not carry over to MATH. Qwen is not on TURN's model list, so this is a warning and not a result. The sampling run on the Llama models is still the test that decides it.
+Two things follow, and both count against a clean pass. The predicted temperature is about 1.8, which is above TURN's whole grid and well above the 0.6 to 0.9 they report as good for general models. The ratio itself also depends on the text, so the constant 1.141 from generic prompts does not carry over to MATH. A second laptop check sampled 8 answers for each of the first 40 problems on Qwen2.5-0.5B, at four temperatures, with a 400-token cap. It is `src/experiment_a_preflight.py` and the data is `data/experiment_a_preflight_acc.json`.
+
+| Temperature | majority of 8 | single sample | no parseable answer |
+| --- | --- | --- | --- |
+| 0.6 | 0.125 | 0.047 | 71% |
+| 1.0 | 0.000 | 0.000 | 88% |
+| 1.4 | 0.000 | 0.000 | 100% |
+| 1.8 | 0.000 | 0.000 | 100% |
+
+On this model, accuracy is gone by 1.0, and the predicted 1.8 produces no usable answers at all. The model is small and weak in TURN's format, and even at 0.6 most samples never reach the answer line, so this says nothing about where the best temperature is. It does say that the literal prediction `T_melt/1.141` would fail badly here. Qwen is not on TURN's model list, and the Llama run is still the test that decides it. The most likely outcome now is a fail, and a GPU run is still worth doing for two reasons. It measures TURN's sample-averaged turning point next to T_melt, which is the ratio that matters. It also tests the per-question setting, which the laptop check did not.
 
 ## Known limits of this design
 

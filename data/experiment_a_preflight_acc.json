@@ -1,0 +1,33 @@
+{
+ "_meta": {
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "problems": 40,
+  "samples": 8,
+  "max_new_tokens": 400,
+  "seed": 0
+ },
+ "0.6": {
+  "maj8": 0.125,
+  "single": 0.046875,
+  "no_answer": 0.709375,
+  "secs": 1126.1528329849243
+ },
+ "1.0": {
+  "maj8": 0.0,
+  "single": 0.0,
+  "no_answer": 0.884375,
+  "secs": 1031.045714855194
+ },
+ "1.4": {
+  "maj8": 0.0,
+  "single": 0.0,
+  "no_answer": 1.0,
+  "secs": 1034.0937490463257
+ },
+ "1.8": {
+  "maj8": 0.0,
+  "single": 0.0,
+  "no_answer": 1.0,
+  "secs": 1057.0643529891968
+ }
+}
