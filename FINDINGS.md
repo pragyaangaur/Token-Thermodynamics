@@ -1020,6 +1020,37 @@ the threshold sweep rather than a point estimate.
 Raw per-threshold records are in `data/ffh_thr.json`, the regenerated strings are in
 `data/ffh_texts_1p5b.json`, and the code is `src/ffh_texts.py` and `src/ffh_thr.py`.
 
+## 7o. The threshold sweep on the second model, and a sign the sweep had hidden
+
+Run on 23 September 2026. Section 7n swept the clustering threshold only on Qwen2.5-1.5B. The same sweep is repeated here on Qwen2.5-0.5B, the model of section 7l, so that the retraction rests on both models. The strings were regenerated with `src/ffh_texts.py --model Qwen/Qwen2.5-0.5B-Instruct` and reclustered with `src/ffh_thr.py`, which loads no language model.
+
+The deterministic numbers reproduce section 7l exactly. Plain token entropy over positions 0 to 2 gives signed AUROC 0.10 for known against fabricated and 0.18 for known against obscure, against 0.098 and 0.176 in 7l. Forking positions 0 to 1 at threshold 0.80 gives 0.67 and 0.59, against 0.668 and 0.586.
+
+### Signed AUROC across the sweep
+
+Above 0.5 means the score rises with fabrication, which is the direction a detector needs. Each cell is known against fabricated, then known against obscure.
+
+| method | 0.65 | 0.75 | 0.80 | 0.85 | 0.90 | 0.95 |
+|---|---:|---:|---:|---:|---:|---:|
+| sampled semantic entropy | 0.99 / 0.87 | 0.96 / 0.83 | 0.97 / 0.90 | 0.92 / 0.86 | 0.71 / 0.71 | 0.53 / 0.53 |
+| fork position 0 only | 0.91 / 0.79 | 0.90 / 0.67 | 0.69 / 0.56 | 0.53 / 0.39 | 0.48 / 0.38 | 0.39 / 0.35 |
+| fork positions 0 to 1 | 0.95 / 0.85 | 0.86 / 0.63 | 0.67 / 0.59 | 0.47 / 0.45 | 0.38 / 0.48 | 0.35 / 0.44 |
+| fork positions 0 to 2 | 0.95 / 0.85 | 0.86 / 0.62 | 0.64 / 0.52 | 0.39 / 0.34 | 0.14 / 0.24 | 0.09 / 0.13 |
+| plain token entropy, pos 0 | 0.36 / 0.38 | 0.36 / 0.38 | 0.36 / 0.38 | 0.36 / 0.38 | 0.36 / 0.38 | 0.36 / 0.38 |
+| plain token entropy, pos 0-2 | 0.10 / 0.18 | 0.10 / 0.18 | 0.10 / 0.18 | 0.10 / 0.18 | 0.10 / 0.18 | 0.10 / 0.18 |
+
+### What this adds to 7n
+
+**The forking detector's direction depends on the threshold.** At the loosest threshold it looks excellent on this model, 0.95 and 0.85, which is better than it ever looked at 0.80. At the strictest threshold it points backwards, 0.09 and 0.13. A reader who chose 0.65 would have reported a working detector, and a reader who chose 0.95 would have reported one that is reliably wrong. Section 7n withdrew the parity claim on the 1.5B model, and this shows the method has no stable reading on the 0.5B model either. The withdrawal stands on both models.
+
+**Semantic entropy keeps the right sign from 0.65 to 0.85 on both models, and falls to chance at 0.95 on this one.** It is the only clustered method whose direction does not depend on the threshold inside that range.
+
+**Plain token entropy points the wrong way on this model at every threshold, because it involves no clustering.** This is section 7l's central negative, and it is now confirmed to be threshold-free on both models.
+
+**The three-way mean in section 7n hid sign flips.** `src/ffh_thr.py` reports `max(a, 1 - a)`, which counts a backwards detector as a good one. On this model the forking detector over positions 0 to 2 scores 0.766 on that mean at threshold 0.95, which is the highest of any method there, and the signed values show it is backwards. The same happens on the 1.5B model, where the forking detector over positions 0 to 2 falls to 0.34 on known against obscure at 0.95. Direction-free AUROC is safe for a method whose sign is known in advance, and none of the clustered methods here qualify. Results in this part of the project should be read in signed form.
+
+Raw per-threshold records are in `data/ffh_thr_0p5b.json`, and the regenerated strings are in `data/ffh_texts_0p5b.json`.
+
 ## 8. Methods
 
 - Models: Qwen2.5-1.5B-Instruct and Qwen2.5-0.5B-Instruct, float32 on Apple M4 (MPS).
