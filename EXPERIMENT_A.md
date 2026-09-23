@@ -67,12 +67,12 @@ On this model, accuracy is gone by 1.0, and the predicted 1.8 produces no usable
 
 ## Smoke run on Kaggle, 23 September 2026
 
-The notebook ran end to end on a Kaggle T4 with Llama-3.2-1B-Instruct, 8 problems, 4 samples and a 256-token cap. It was a pipeline check, and its accuracy numbers carry no weight at that size. The compact record is .
+The notebook ran end to end on a Kaggle T4 with Llama-3.2-1B-Instruct, 8 problems, 4 samples and a 256-token cap. It was a pipeline check, and its accuracy numbers carry no weight at that size. The compact record is `data/experiment_a_smoke_llama1b.json`.
 
-- **The log-probability check works.** The slope at  came out at 2.0001, so this vLLM returned tempered log probabilities, which is what TURN used. The entropy curve is therefore TURN's own quantity.
-- **TURN's temperature reproduces.** The sweep gives , inside the 0.6 to 0.7 that Du, Yang and Welleck report for general models, even from only 8 samples per temperature.
-- **The ratio that matters is far from 1.141.** T_melt has a median of 1.77, so  is 2.95. The single-distribution ratio on the same positions is 1.025, as on the Qwen models. The gap between the two is the difference between one next-token distribution and TURN's sample-averaged curve, which is the transfer that section 7m flagged as untested.
-- **The predicted temperature lands in noise.**  is 1.55. From  upward every sample in the smoke run was unparseable, and the samples at 1.55 are strings of unrelated tokens.
+- **The log-probability check works.** The slope at `T = 0.5` came out at 2.0001, so this vLLM returned tempered log probabilities, which is what TURN used. The entropy curve is therefore TURN's own quantity.
+- **TURN's temperature reproduces.** The sweep gives `t* = 0.6`, inside the 0.6 to 0.7 that Du, Yang and Welleck report for general models, even from only 8 samples per temperature.
+- **The ratio that matters is far from 1.141.** T_melt has a median of 1.77, so `T_melt / t*` is 2.95. The single-distribution ratio on the same positions is 1.025, as on the Qwen models. The gap between the two is the difference between one next-token distribution and TURN's sample-averaged curve, which is the transfer that section 7m flagged as untested.
+- **The predicted temperature lands in noise.** `T_melt/1.141` is 1.55. From `T = 1.2` upward every sample in the smoke run was unparseable, and the samples at 1.55 are strings of unrelated tokens.
 - **Timing.** The whole run took about 4 minutes of generation. With only 32 sequences in flight it reached 734 tokens a second, and the full run batches 6400 sequences, so its throughput should be much higher. The full run is still split into two parts, A and B, so each fits inside a 12-hour session.
 
 ## Known limits of this design
