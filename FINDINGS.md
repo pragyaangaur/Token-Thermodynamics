@@ -1051,6 +1051,33 @@ Above 0.5 means the score rises with fabrication, which is the direction a detec
 
 Raw per-threshold records are in `data/ffh_thr_0p5b.json`, and the regenerated strings are in `data/ffh_texts_0p5b.json`.
 
+## 7p. Two published scores read the logit offset across model families
+
+Run on 23 September 2026. This is item 8 of section 9. Section 7g showed that where a model's logits sit is arbitrary: GPT-2's bulk sits near −110 and Pythia-160M's near +826, and softmax ignores the difference completely. Any score meant to describe the model's belief should ignore it too. The question was whether a published result depends on it.
+
+**No published result flips, because none compares across models.** The two closest measures read raw logit values rather than probabilities. LogTokU (arXiv 2502.00290) uses the top-K raw logits as Dirichlet evidence, and Semantic Energy (arXiv 2508.14496) uses the negative raw logit of each token as its energy. LogTokU evaluates Llama 2 and Llama 3 models one at a time, and Semantic Energy evaluates Qwen3-8B and ERNIE-21B one at a time. Neither reports a value or a threshold carried from one model to another. So the honest answer to item 8 is that the published claims are safe as stated. The measurements below show what would happen to anyone who used these scores across model families.
+
+`src/logit_offset.py` computes both scores on the seven models and 20 prompts of section 7g, once on the raw logits and once on the logits measured from their mode, which is the reference the melting law uses. LogTokU does not state its K, so K = 2, 10 and 25 were all run, and they agree.
+
+**A shift that changes nothing changes the raw scores.** Adding 20 to every logit of a test distribution leaves entropy at 1.7963. The raw token energy moves from −26.4 to −46.4, and LogTokU's epistemic uncertainty at K = 10 moves from 0.041 to 0.023. The mode-relative versions do not move.
+
+**Across models, the raw scores rank models by their logit offset and by nothing else.** Spearman correlation of each score's per-model median, across the seven models:
+
+| score | with entropy | with the logit offset (mode) | models where defined |
+|---|---:|---:|---:|
+| Semantic Energy, raw | +0.107 | **−1.000** | 7 |
+| Semantic Energy, relative to mode | **+0.893** | +0.036 | 7 |
+| LogTokU EU, raw, any K | −0.429 | **−1.000** | 6 |
+| LogTokU EU, relative to mode, any K | **+0.893** | +0.036 | 7 |
+
+The raw versions are perfectly ranked by the offset, which carries no information about the model's belief. Raw LogTokU is not even defined on GPT-2, whose top logits are all negative, so the digamma terms fall outside their domain. Measuring from the mode removes the dependence entirely, and the ranking then follows entropy. With seven models these correlations are coarse, but a Spearman of exactly −1.000 is not a borderline case.
+
+One thing the mode does not fix. LogTokU's aleatoric term, measured from the mode, correlates at −0.893 with entropy across models. It measures how evenly the top-K evidence values are spread, which is a different quantity from the spread of probability, and that is a property of the method's design rather than of the offset.
+
+**Within one model the offset also moves between prompts.** Its standard deviation across the 20 prompts ranges from 1.0 logits on OPT-125M to 26.8 on GPT-2. For the raw token energy, the mode-relative version tracks entropy more closely on all seven models, for example −0.09 against 0.33 on GPT-2 and 0.09 against 0.67 on BLOOMZ. That is an observation and not a verdict. Semantic Energy's argument is that raw logit size carries information that probability throws away, and section 4 of this document disagrees. Deciding that needs labelled detection data. What this section does establish is that part of the raw score's variation within a model is the offset, so the disagreement is a real one and can be tested.
+
+**The practical statement.** Scores built from raw logit values are safe inside one model and meaningless across model families unless the logits are first measured from a reference such as the mode. The same applies to any threshold for such a score transferred from one model to another. The data is in `data/logit_offset.json`.
+
 ## 8. Methods
 
 - Models: Qwen2.5-1.5B-Instruct and Qwen2.5-0.5B-Instruct, float32 on Apple M4 (MPS).
@@ -1113,10 +1140,11 @@ New items, in priority order:
    Entropy Probes achieve a larger cost saving by reading hidden states. A head-to-head on
    the same data would say whether forking adds anything or is simply a worse route to the
    same place.
-8. **Check whether the mean-versus-mode problem in section 7g affects published measures.**
-   Several logit-aggregating uncertainty methods use means. Pythia's mean logit sits 2.2
-   standard deviations from its mode. Whether that changes any published cross-model
-   comparison is a concrete, checkable question.
+8. ~~Check whether the mean-versus-mode problem in section 7g affects published measures.~~
+   **Done, section 7p.** No published result flips, because the two closest measures,
+   LogTokU and Semantic Energy, never compare across models. Used across model families,
+   both rank models perfectly by their logit offset (Spearman −1.000) and not by their
+   uncertainty. Measuring the logits from the mode fixes it.
 
 Added 16 September 2026, after reading the closest prior work listed in `NOVELTY.md`:
 
