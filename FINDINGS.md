@@ -538,8 +538,9 @@ every model's `T_melt` lands between 1.04 and 1.45. That is exactly what the law
 because softmax is shift-invariant and `T_melt` depends only on the gap to the bulk.
 
 The practical lesson is worth stating separately: **any measure that summarises a logit
-vector with a mean is not safe to compare across model families.** Pythia's mean sits 2.2
-standard-deviation-widths below its mode. Several published uncertainty measures aggregate
+vector with a mean is not safe to compare across model families.** Measured to the mean, Pythia's gap is 2.7 times its gap to the mode and BLOOMZ's is 8.0 times.
+
+**Correction, 23 September 2026.** This paragraph used to say that Pythia's mean sits 2.2 standard deviations below its mode. That was wrong. The table above gives a displacement of (826.4 − 807.1)/80.8 = 0.24 standard deviations. The 2.2 is the ratio of the gap to the mean over the gap to the median, the last column of the table. The medians over the 20 prompts in `data/multimodel_melt3.json` put the mean between 0.2 and 0.9 standard deviations from the mode on every model. The conclusion does not change, because a small shift in the mean still moves a gap of 11 logits a long way. Several published uncertainty measures aggregate
 logits by mean, and this is a concrete reason to check that choice before comparing models.
 
 ## 7h. The log V term, tested properly with models trained for the purpose
