@@ -1,6 +1,6 @@
 # Experiment A: does T_melt/1.141 replace a temperature sweep
 
-Written 23 September 2026. It is the experiment that decides whether the melting law has a practical use. The harness is `src/experiment_a.py`, and `notebooks/experiment_a_kaggle.ipynb` runs it on a free Kaggle GPU. Nothing in this file is a result yet, apart from the pre-flight check near the end.
+Written 23 September 2026. It is the experiment that decides whether the melting law has a practical use. The harness is `src/experiment_a.py`, and `notebooks/experiment_a_kaggle.ipynb` runs it on a free Kaggle GPU. **The result is in, and the prediction fails.** On Llama-3.2-1B-Instruct, sampling at `T_melt/1.141 = 1.50` gives majority-vote accuracy of exactly 0 at every N, against 0.390 at the best grid temperature. The result section is near the end.
 
 ## The question
 
@@ -29,7 +29,7 @@ The summary reports the best grid temperature, the best of TURN's six fixed base
 
 ## Decision rule, to be fixed before the run
 
-This is a proposal. It should be confirmed or changed before any GPU time is spent, because choosing it after seeing the numbers would defeat its purpose.
+This was written before any GPU time was spent, because choosing it after seeing the numbers would defeat its purpose. It was not changed after the results came in.
 
 - The primary endpoint is MATH majority-voting accuracy at N = 16, averaged over the two disjoint blocks of `k = 32`.
 - The prediction **works** on a model if the single-temperature melting setting lands within 0.02 of the best grid accuracy, and its drop is no more than 0.01 larger than TURN's drop.
@@ -74,6 +74,38 @@ The notebook ran end to end on a Kaggle T4 with Llama-3.2-1B-Instruct, 8 problem
 - **The ratio that matters is far from 1.141.** T_melt has a median of 1.77, so `T_melt / t*` is 2.95. The single-distribution ratio on the same positions is 1.025, as on the Qwen models. The gap between the two is the difference between one next-token distribution and TURN's sample-averaged curve, which is the transfer that section 7m flagged as untested.
 - **The predicted temperature lands in noise.** `T_melt/1.141` is 1.55. From `T = 1.2` upward every sample in the smoke run was unparseable, and the samples at 1.55 are strings of unrelated tokens.
 - **Timing.** The whole run took about 4 minutes of generation. With only 32 sequences in flight it reached 734 tokens a second, and the full run batches 6400 sequences, so its throughput should be much higher. The full run is still split into two parts, A and B, so each fits inside a 12-hour session.
+
+## Result, 25 September 2026
+
+The full run on Llama-3.2-1B-Instruct used 200 MATH problems and `k = 32` samples per question at 16 settings, split over four Kaggle sessions (parts A, B1, B2a and B2b). T_melt and the TURN sweep were recomputed in each session and came out identical, with the same 200 greedy answers and the same `t* = 0.7`, so the parts were merged and scored together. The compact record is `data/experiment_a_llama1b.json`.
+
+**The prediction fails under the decision rule.** Majority-vote accuracy at `N = 16` is 0.390 at the best grid temperature and exactly 0.000 at both melting settings, a drop of 0.39 against the fail threshold of 0.05. The rule says a fail on any model stops the claim, so the 3B grid was not run.
+
+| Setting | temperature | N = 1 | N = 4 | N = 16 | N = 32 | tokens per sample |
+| --- | --- | --- | --- | --- | --- | --- |
+| best grid at N = 16 | 0.6 | 0.181 | 0.255 | 0.390 | 0.405 | 335 |
+| TURN | 0.7 | 0.159 | 0.234 | 0.315 | 0.365 | 336 |
+| grid | 0.3 | 0.232 | 0.305 | 0.367 | 0.365 | 359 |
+| grid | 1.0 | 0.047 | 0.084 | 0.170 | 0.260 | 507 |
+| grid | 1.2 | 0.004 | 0.013 | 0.048 | 0.060 | 959 |
+| grid | 1.4 | 0.000 | 0.001 | 0.003 | 0.005 | 1000 |
+| T_melt/1.141 for the task | 1.502 | 0.000 | 0.000 | 0.000 | 0.000 | 1005 |
+| T_melt/1.141 per question | 1.395 to 1.638 | 0.000 | 0.000 | 0.000 | 0.000 | 1004 |
+
+The samples at 1.50 are strings of unrelated tokens from many languages that run to the 1024-token cap. Accuracy falls smoothly from about 0.6 and has almost gone by 1.2, so the predicted temperature is well past the point where this model stops producing answers.
+
+**TURN also misses on this model under the same rule.** Its drop at `N = 16` is 0.075, which is above the 0.05 threshold. At `k = 32` there are only two disjoint blocks of 16 samples, and the best grid value is the largest of 14 noisy numbers, which biases it upwards, so the `N = 16` column carries an error of a few points. That noise matters for TURN's miss and not for the melting settings, which score exactly zero. TURN picks 0.7 on this model, inside the 0.6 to 0.7 that Du, Yang and Welleck report, so the reimplementation reproduces their temperature.
+
+**Where the chain broke.** The ratio that matters is T_melt over TURN's sample-averaged turning point, and it is far from 1.141 on both models that were measured.
+
+| Model | median T_melt | TURN t* | T_melt / t* | single-distribution ratio, S against T |
+| --- | --- | --- | --- | --- |
+| Llama-3.2-1B-Instruct | 1.714 | 0.7 | 2.45 | 1.026 |
+| Llama-3.2-3B-Instruct | 1.790 | 0.6 | 2.98 | 1.022 |
+
+The single-distribution result reproduces on the Llama models, with a ratio of about 1.02 on MATH as on the Qwen models. The ordering also holds for TURN's curve on both models, since `t*` is below T_melt. What does not transfer is the size of the gap. TURN's curve is averaged over the tokens a model actually samples, and once sampling leaves the greedy path the next distributions are flatter. The sample-averaged entropy jumps from 0.70 at `T = 0.9` to 2.28 at 1.0 and 6.1 at 1.1 on the 1B model, and the 3B curve does the same. So the generated sequence collapses near `T = 1.0`, while T_melt read along the greedy answer is about 1.7. That explanation is a reading of the curves and has not been tested, for instance by measuring T_melt along sampled answers. A constant fitted after the fact would have to be about 2.5 to 3, it differs by a factor of 1.22 between the two models, and fitting it needs the sweep it was meant to replace.
+
+The 3B record is `data/experiment_a_ratio_llama3b.json`. It has the melt and TURN phases only.
 
 ## Known limits of this design
 

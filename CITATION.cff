@@ -18,5 +18,6 @@ abstract: >-
   Softmax sampling in a language model is exactly the Boltzmann distribution. This
   repository computes the resulting thermodynamics of the next-token distribution from
   one forward pass, gives a closed form for the heat-capacity peak in terms of the logit
-  gap and the vocabulary size, tests it across 12 models, and records seven falsified
-  hypotheses alongside the results that survived.
+  gap and the vocabulary size, tests it across 12 models, and records eight falsified
+  hypotheses alongside the results that survived. One of them is a pre-registered test in
+  which sampling at a temperature predicted from the melting temperature failed.

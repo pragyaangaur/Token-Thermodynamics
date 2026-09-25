@@ -42,6 +42,8 @@ their own convention, an inflection of `log H` against a linear `T`, is not inva
 a global rescaling of the logits and varies 11.2x across families. That last point is the
 same class of warning as the mean-versus-mode one in claim #22.
 
+**Tested on 25 September 2026, in FINDINGS.md section 7q.** The practical use this paper seemed to offer did not hold. Sampling at `T_melt/1.141` scores exactly 0 on their MATH set with Llama-3.2-1B, because the single-distribution ratio does not carry over to their sample-averaged curve. So the comparison with their method is now a relation between two temperatures and a documented negative result, and it gives the melting law no downstream task.
+
 **Semantic Energy: Detecting LLM Hallucination Beyond Entropy** (arXiv 2508.14496).
 This is the closest paper to my setup and I did not know about it when I started. It uses
 **the same mapping I use**, energy = negative logit, explicitly Boltzmann-inspired, with

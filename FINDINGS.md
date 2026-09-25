@@ -39,7 +39,7 @@ item's own melting temperature is scale-invariant at no cost in accuracy.
 **Did not survive.** Discrete band structure in the spectrum. Top-k truncation raising the
 melting temperature. Separating paraphrase from meaning by temperature. Energy-gap
 clustering. The meaning-free-energy correction to greedy decoding. A multivariate accuracy
-gain (one of two models). Any useful gain in selective prediction. And one headline figure
+gain (one of two models). Any useful gain in selective prediction. Sampling at `T_melt/1.141` in place of a temperature sweep, which scores exactly zero on MATH (section 7q). And one headline figure
 of my own, that 98.8% of meaning sits in the first three tokens, which the threshold
 sensitivity analysis in 7i partly overturned.
 
@@ -272,6 +272,10 @@ Stated in full, because these were the original hypotheses and most of them were
 - **Peak-detection features are numerically fragile.** Under logit noise of 5e-2 the
   continuous integral features keep Spearman 0.96 to 0.99 against their unperturbed
   values, while `npeaks` drops to 0.54. Prefer integrals over peak finding.
+- **`T_melt/1.141` is not a usable sampling temperature.** On Llama-3.2-1B-Instruct and
+  TURN's MATH set it predicts 1.50, and majority-vote accuracy there is exactly 0 against
+  0.390 at the best swept temperature. The single-distribution ratio does not transfer to
+  the sample-averaged entropy curve that TURN uses. Section 7q has the numbers.
 
 ## 7. Replication on a second model (Qwen2.5-0.5B-Instruct, same 3096 questions)
 
@@ -919,7 +923,7 @@ The useful number is the last line of each block. For the first convention the p
 medians span only **1.063x** across seven model families and a 5.1x range of vocabulary
 size, and for the second they span 1.139x. On these 20 prompts the ratio is stable across model families. `T_melt = Delta/(log V + c)` comes from one forward pass, so if the constant held everywhere, dividing by it would give the single-distribution turning point without a temperature sweep. Whether the resulting temperature is as good to sample at is not tested here, and that is the experiment that would matter.
 
-**Update, 23 September 2026. The constant depends on the text.** The same measurement on the 200 MATH problems used by Du, Yang and Welleck, with their four-shot prompt, gives a different ratio. T_melt was read at each of the first 32 positions of a greedy answer, 6400 distributions per model. The ratio for the first convention has median 1.025 on Qwen2.5-0.5B (IQR 1.019 to 1.038) and 1.028 on Qwen2.5-1.5B (IQR 1.020 to 1.043). On the 20 generic prompts above, the same two models gave 1.113 and 1.142. The ordering still holds everywhere, as it must. The ratio stays tight across families within one kind of text and moves between kinds of text, so a single constant of 1.14 cannot be carried from one domain to another. T_melt itself also rises on this text, to a median of 2.08 and 2.05. Dividing by 1.141 then predicts a sampling temperature near 1.8, which is above the whole range Du, Yang and Welleck search. A small sampling check on Qwen2.5-0.5B (40 problems, 8 samples each) gives majority-vote accuracy of 0.125 at `T = 0.6` and exactly 0 at 1.0, 1.4 and 1.8, so the literal prediction fails on that model. The data is in `data/experiment_a_preflight.json` and `data/experiment_a_preflight_acc.json`, and the full sampling test is described in `EXPERIMENT_A.md`.
+**Update, 23 September 2026. The constant depends on the text.** The same measurement on the 200 MATH problems used by Du, Yang and Welleck, with their four-shot prompt, gives a different ratio. T_melt was read at each of the first 32 positions of a greedy answer, 6400 distributions per model. The ratio for the first convention has median 1.025 on Qwen2.5-0.5B (IQR 1.019 to 1.038) and 1.028 on Qwen2.5-1.5B (IQR 1.020 to 1.043). On the 20 generic prompts above, the same two models gave 1.113 and 1.142. The ordering still holds everywhere, as it must. The ratio stays tight across families within one kind of text and moves between kinds of text, so a single constant of 1.14 cannot be carried from one domain to another. T_melt itself also rises on this text, to a median of 2.08 and 2.05. Dividing by 1.141 then predicts a sampling temperature near 1.8, which is above the whole range Du, Yang and Welleck search. A small sampling check on Qwen2.5-0.5B (40 problems, 8 samples each) gives majority-vote accuracy of 0.125 at `T = 0.6` and exactly 0 at 1.0, 1.4 and 1.8, so the literal prediction fails on that model. The data is in `data/experiment_a_preflight.json` and `data/experiment_a_preflight_acc.json`, and the full sampling test is described in `EXPERIMENT_A.md`. **Update, 25 September 2026:** the full test failed on Llama-3.2-1B, and section 7q has the result.
 
 ### The third convention does not survive a change of model
 
@@ -1079,6 +1083,20 @@ One thing the mode does not fix. LogTokU's aleatoric term, measured from the mod
 
 **The practical statement.** Scores built from raw logit values are safe inside one model and meaningless across model families unless the logits are first measured from a reference such as the mode. The same applies to any threshold for such a score transferred from one model to another. The data is in `data/logit_offset.json`.
 
+## 7q. Sampling at T_melt/1.141 fails, and the ratio does not transfer to a sampled curve
+
+Run on Kaggle T4 GPUs from 23 to 25 September 2026. This is item 10 of section 9, the experiment that would have given the melting law a practical use. The protocol and decision rule are in `EXPERIMENT_A.md` and were written before the run. The data is `data/experiment_a_llama1b.json` and `data/experiment_a_ratio_llama3b.json`.
+
+On Llama-3.2-1B-Instruct, with TURN's 200 MATH problems, their four-shot prompt, their grader and `k = 32` samples per question, majority-vote accuracy at `N = 16` peaks at 0.390 at `T = 0.6`. It is 0.315 at TURN's own choice of 0.7, 0.170 at 1.0 and 0.003 at 1.4. Median T_melt along the greedy answer is 1.714, so `T_melt/1.141` is 1.502, and sampling there gives accuracy of exactly 0 at every N from 1 to 32. The per-question version, with temperatures from 1.40 to 1.64, also gives exactly 0. Every sample at those temperatures is a run of unrelated tokens from many languages that reaches the 1024-token cap. Under the pre-registered rule this is a fail, by 0.39 against a threshold of 0.05, and one fail stops the claim.
+
+The single-distribution result still reproduces. On the Llama models the ratio of T_melt to the single-distribution turning point is 1.026 on the 1B and 1.022 on the 3B, close to the 1.025 and 1.028 measured on Qwen with the same prompts in section 7m. The ordering also holds for TURN's sample-averaged curve, since its turning point is 0.7 on the 1B and 0.6 on the 3B, both below T_melt. The size of the gap is what fails to transfer. T_melt divided by TURN's turning point is 2.45 on the 1B and 2.98 on the 3B, far from 1.02 and different between the two models by a factor of 1.22.
+
+My reading of why is that T_melt is measured along the greedy answer, and TURN's curve is measured along sampled answers. Once one sampled token leaves the likely path, the distributions that follow are flatter, and the damage compounds. TURN's sample-averaged entropy on the 1B is 0.70 at `T = 0.9`, 2.28 at 1.0 and 6.1 at 1.1, and the mean answer length rises from 373 to 507 to 822 tokens over the same range. The generated sequence therefore collapses near `T = 1.0`, well below the per-token melting temperature of about 1.7. That collapse is probably closer to the sequence-level transition that Arnold et al. (2024) study than to the per-token one the melting law describes. The explanation is a reading of these curves and has not been tested. The direct test would be to measure T_melt along sampled answers at several temperatures and see whether it falls as the temperature rises.
+
+TURN itself also misses the rule on this model, with a drop of 0.075 at `N = 16`. At `k = 32` there are only two disjoint blocks of 16 samples, and the best grid value is the largest of 14 noisy numbers, so that column carries an error of a few points. The noise matters for TURN's miss and does not matter for the melting settings, which score exactly zero. The 3B grid was not run, because the rule was already decided.
+
+What survives is the ordering theorem and the stable single-distribution ratio within one kind of text. What is dropped is the claim that one forward pass can replace a temperature sweep. A constant fitted after the fact would need to be about 2.5 to 3, it moves between the two models, and fitting it needs the sweep it was meant to replace.
+
 ## 8. Methods
 
 - Models: Qwen2.5-1.5B-Instruct and Qwen2.5-0.5B-Instruct, float32 on Apple M4 (MPS).
@@ -1168,4 +1186,6 @@ Added 16 September 2026, after reading the closest prior work listed in `NOVELTY
     temperature matches the swept one, a temperature sweep is replaced by one forward
     pass. The harness is `src/experiment_a.py` and the protocol is `EXPERIMENT_A.md`.
     The update in section 7m makes a clean pass less likely, because the constant moves
-    with the text.
+    with the text. **Run 25 September 2026, section 7q, and it fails.** Accuracy at the
+    predicted temperature is exactly 0 on Llama-3.2-1B, and T_melt over TURN's turning
+    point is 2.45 and 2.98 on the 1B and 3B, far from 1.141.
