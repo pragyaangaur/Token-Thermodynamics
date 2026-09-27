@@ -41,7 +41,7 @@ for thr in THRS:
 print()
 r = np.array(rows)
 print("VERDICT")
-print(f"  'content decided in the first 3 tokens' holds at every threshold tested:")
+print("  'content decided in the first 3 tokens' holds at every threshold tested:")
 print(f"    share at pos 0 is {r[:,3].min():.3f} to {r[:,3].max():.3f}, at pos 6+ it is {r[:,5].min():.4f} to {r[:,5].max():.4f}")
 print(f"    percent of semantic entropy in positions 0-2: {r[:,6].min():.1f} to {r[:,6].max():.1f}")
 print(f"  entropy is anticorrelated with meaning share at every threshold: rho {r[:,7].min():+.3f} to {r[:,7].max():+.3f}")

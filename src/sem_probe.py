@@ -6,11 +6,11 @@ equality (an adequate entailment proxy for short factual answers), take the
 entropy over clusters. This is the 'configurational' entropy of the answer
 distribution: it counts distinct meanings and ignores paraphrase.
 """
-import json, os, re, sys, time, argparse
+import json, os, sys, time, argparse
 import numpy as np, torch
 sys.path.insert(0, os.path.dirname(__file__))
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from probe import TEMPLATES, norm, grade
+from probe import TEMPLATES, norm
 
 def main():
     ap = argparse.ArgumentParser()

@@ -3,7 +3,7 @@ import sys, os
 import numpy as np
 from scipy.stats import spearmanr
 sys.path.insert(0, os.path.dirname(__file__))
-from synth_split import build, truth, win, B
+from synth_split import build, truth, B
 from dos import make_dos, curves_dos
 from gapclust import gap_entropy
 

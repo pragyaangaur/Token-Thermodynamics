@@ -96,7 +96,7 @@ def main():
         print(f"  mass left on the table by greedy       : {(tm-gm).mean():.3f}")
     json.dump(res, open(a.out, "w"))
     A = res["free-form"]; B = res["short-factual"]
-    print(f"\nSUMMARY  greedy picks the most probable MEANING:")
+    print("\nSUMMARY  greedy picks the most probable MEANING:")
     print(f"  free-form     {np.mean([r['agree'] for r in A])*100:5.1f}%   "
           f"phrasing degeneracy {np.mean([r['mean_S_phr'] for r in A]):.2f} nats")
     print(f"  short factual {np.mean([r['agree'] for r in B])*100:5.1f}%   "

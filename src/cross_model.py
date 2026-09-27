@@ -4,10 +4,10 @@ This is the non-synthetic version of the rescaling experiment. Two models have
 different logit scales and different competence, so a detector built on
 scale-dependent scalars should transfer badly and a scale-free one should not.
 """
-import sys, os, pickle
+import sys, os
 import numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
-from analyze import load, BASE, SHAPE, SCALE, mat
+from analyze import load, BASE, SHAPE, mat
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler

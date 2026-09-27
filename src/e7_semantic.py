@@ -11,11 +11,11 @@ alone, from one forward pass:
 Windows are expressed relative to the melting temperature so the measure does
 not depend on the logit scale.
 """
-import json, sys, os, pickle, argparse
+import json, sys, os, pickle
 import numpy as np
 from scipy.stats import spearmanr
 sys.path.insert(0, os.path.dirname(__file__))
-from sklearn.linear_model import Ridge, LogisticRegression
+from sklearn.linear_model import Ridge
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import roc_auc_score
@@ -91,7 +91,7 @@ def main(recs_pkl, sem_json):
                                                G, np.array([feats[k] for k in feats]).T,
                                                np.array([r["_shape"] for r, _ in rows])]),
     }
-    from sklearn.model_selection import KFold, cross_val_predict, StratifiedKFold
+    from sklearn.model_selection import KFold, cross_val_predict
     for name, X in Xsets.items():
         X = np.nan_to_num(X, nan=0, posinf=0, neginf=0)
         m = make_pipeline(StandardScaler(), Ridge(alpha=1.0))

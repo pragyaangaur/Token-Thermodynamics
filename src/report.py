@@ -1,4 +1,4 @@
-import json, sys, os, pickle, argparse
+import sys, os, pickle, argparse
 import numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
 from analyze import load, BASE, SHAPE, SCALE, auroc, boot_auc, cv_auc, mat

@@ -12,7 +12,7 @@ Then measure, in logit (energy) units:
 The ratio decides whether a temperature window can separate the two, which the
 synthetic phase diagram says needs roughly delta/spread < 0.1.
 """
-import json, os, re, sys, time, argparse
+import json, os, sys, time, argparse
 import numpy as np, torch
 sys.path.insert(0, os.path.dirname(__file__))
 from transformers import AutoModelForCausalLM, AutoTokenizer

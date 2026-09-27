@@ -27,7 +27,7 @@ for regime, delta, spread in [("well separated (d=0.15,s=6)", .15, 6.), ("modera
     D = np.array(D)
     St, Sc, Sv, cold, cold2, mid, Cmax, C1 = D.T
     print(f"\n{regime}")
-    print(f"   how good is the cold window as an estimate of the NUISANCE term S_vib?")
+    print("   how good is the cold window as an estimate of the NUISANCE term S_vib?")
     print(f"     rho(S_cold[0,0.05], S_vib)    = {spearmanr(cold, Sv).statistic:+.4f}")
     print(f"     rho(S_cold[0,0.05], S_config) = {spearmanr(cold, Sc).statistic:+.4f}   <- near zero means it is a clean nuisance estimate")
     sets = {
@@ -38,7 +38,7 @@ for regime, delta, spread in [("well separated (d=0.15,s=6)", .15, 6.), ("modera
         "S_total + S_cold + S_mid":      np.c_[St, cold, mid],
         "S_cold + S_mid only":           np.c_[cold, mid],
     }
-    print(f"   predicting S_config (= semantic entropy), 5-fold held out:")
+    print("   predicting S_config (= semantic entropy), 5-fold held out:")
     for n, X in sets.items():
         p = cross_val_predict(make_pipeline(StandardScaler(), Ridge(1.0)), X, Sc, cv=KFold(5, shuffle=True, random_state=0))
         print(f"     {n:32s} R^2={r2(Sc, p):+.4f}  rho={spearmanr(Sc, p).statistic:+.4f}")

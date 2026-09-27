@@ -25,7 +25,7 @@ DELTAS = [0.05, 0.15, 0.4, 0.8, 1.5, 3.0]
 SPREADS = [2.0, 4.0, 8.0]
 N = 300
 rng = np.random.default_rng(11)
-print(f"gain in held-out R^2 for predicting semantic entropy, from adding the cold-window feature")
+print("gain in held-out R^2 for predicting semantic entropy, from adding the cold-window feature")
 print(f"{'delta':>7s} {'spread':>7s} {'d/s':>6s} | {'R2(S_tot)':>10s} {'R2(+cold)':>10s} {'gain':>8s} | {'rho(cold,S_vib)':>16s} {'rho(cold,S_cfg)':>16s}")
 from scipy.stats import spearmanr
 for spread in SPREADS:

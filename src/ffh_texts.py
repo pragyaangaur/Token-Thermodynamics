@@ -10,7 +10,7 @@ This script does the generation half and nothing else. `src/ffh_thr.py` does
 the clustering sweep.
 """
 import json, sys, os, argparse
-import numpy as np, torch
+import torch
 sys.path.insert(0, os.path.dirname(__file__))
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from freeform_hallucination import KNOWN, OBSCURE, FABRICATED
