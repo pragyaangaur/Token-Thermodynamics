@@ -27,7 +27,7 @@ a.legend(fontsize=7,frameon=False,loc="lower right"); a.set_ylim(0,1.05); a.grid
 
 # panel 2: position-resolved meaning share
 W=json.load(open("data/where_meaning.json"))
-R=[r for o in W["tokens"] ] if isinstance(W,dict) else [r for o in W for r in o["tokens"]]
+R=list(W["tokens"]) if isinstance(W,dict) else [r for o in W for r in o["tokens"]]
 pos=np.array([r["pos"] for r in R]); ms=np.array([r["meaning_share"] for r in R])
 H=np.array([r["H_topk"] for r in R]); SE=np.array([r["S_sem"] for r in R])
 a=ax[1]
