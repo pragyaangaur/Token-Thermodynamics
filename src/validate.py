@@ -30,7 +30,7 @@ check("max |F - (U - T S)|", np.max(np.abs(c["F"] - (c["U"] - c["T"] * c["S"])))
 # Independent centred finite differences at isolated temperatures avoid the
 # meaningless relative errors produced near C=0 by the old log-grid check.
 du_errors, ds_errors = [], []
-for temperature, capacity in zip(temperatures, c["C"]):
+for temperature, capacity in zip(temperatures, c["C"], strict=True):
     step = temperature * 1e-4
     side = curves(logits, 1.0 / np.array([temperature - step, temperature + step]))
     d_u = (side["U"][1] - side["U"][0]) / (2 * step)

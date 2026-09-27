@@ -69,7 +69,7 @@ def main():
             top_mass = int(np.argmax(counts))
             # phrasing degeneracy: distinct surface strings per meaning
             uniq = {}
-            for c, t in zip(sl, samples): uniq.setdefault(c, set()).add(t)
+            for c, t in zip(sl, samples, strict=True): uniq.setdefault(c, set()).add(t)
             Sphr = {c: float(np.log(len(v))) for c, v in uniq.items()}
             recs.append(dict(q=q, greedy=greedy[:120],
                              greedy_cluster=int(gl), top_mass_cluster=top_mass,

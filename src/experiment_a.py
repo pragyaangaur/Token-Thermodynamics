@@ -199,7 +199,7 @@ class HFGen:
     def generate(self, prompts, temps, n, max_tokens, stop, logprobs, seed):
         torch = self.torch
         out = []
-        for i, (p, t) in enumerate(zip(prompts, temps)):
+        for i, (p, t) in enumerate(zip(prompts, temps, strict=True)):
             torch.manual_seed(seed + i)
             ids = self.tok(p, return_tensors="pt").input_ids.to(self.dev)
             g = self.model.generate(ids, do_sample=True, temperature=float(t), top_k=0,
@@ -223,7 +223,7 @@ class HFGen:
                     for k in range(len(toks)):
                         lp = torch.log_softmax(g.logits[k][j].float().cpu().double(), -1)
                         v, ix = lp.topk(TOPK)
-                        pos.append(dict(zip(ix.tolist(), v.tolist())))
+                        pos.append(dict(zip(ix.tolist(), v.tolist(), strict=True)))
                 samples.append(dict(text=text, ntok=len(toks), pos=pos))
             out.append(samples)
         return out
@@ -300,7 +300,7 @@ def detect_mode(gen_out, melt, prompt_idx, T):
     slope 1/T. The slope is saved so a reader can check which one vLLM returned.
     """
     xs, ys = [], []
-    for samples, qi in zip(gen_out, prompt_idx):
+    for samples, qi in zip(gen_out, prompt_idx, strict=True):
         ref = melt["rows"][qi]["top50"]
         for s in samples:
             if not s["pos"]:
@@ -414,10 +414,10 @@ def score_setting(a, rows, texts, grade):
         parsed = [[parse_math(t, a.parse) for t in q] for q in texts]
         for N in Ns:
             per_q = [np.mean([majority_correct(ans[b * N:(b + 1) * N], r["answer"], grade)
-                              for b in range(a.k // N)]) for ans, r in zip(parsed, rows)]
+                              for b in range(a.k // N)]) for ans, r in zip(parsed, rows, strict=True)]
             acc[N] = float(np.mean(per_q))
     else:
-        correct = [sum(mbpp_passes(r, t) for t in q) for q, r in zip(texts, rows)]
+        correct = [sum(mbpp_passes(r, t) for t in q) for q, r in zip(texts, rows, strict=True)]
         for N in Ns:
             acc[N] = float(np.mean([pass_at(a.k, c, N) for c in correct]))
     return acc

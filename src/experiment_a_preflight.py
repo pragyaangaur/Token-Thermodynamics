@@ -31,9 +31,9 @@ for T in [0.6, 1.0, 1.4, 1.8]:
                        False, 0)
     parsed = [[E.parse_math(s["text"], extra["parse"]) for s in q] for q in res]
     maj = np.mean([E.majority_correct(p, r["answer"], grade_answer)
-                   for p, r in zip(parsed, rows)])
+                   for p, r in zip(parsed, rows, strict=True)])
     single = np.mean([np.mean([x != "no answer" and grade_answer(r["answer"], x) for x in p])
-                      for p, r in zip(parsed, rows)])
+                      for p, r in zip(parsed, rows, strict=True)])
     noans = np.mean([x == "no answer" for p in parsed for x in p])
     out[str(T)] = dict(maj8=float(maj), single=float(single), no_answer=float(noans),
                        secs=time.time() - t0)
