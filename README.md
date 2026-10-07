@@ -1,6 +1,7 @@
 # Temperature spectroscopy of a language model's next-token distribution
 
 [![reproduce](https://github.com/pragyaangaur/Token-Thermodynamics/actions/workflows/repro.yml/badge.svg)](https://github.com/pragyaangaur/Token-Thermodynamics/actions/workflows/repro.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23219063.svg)](https://doi.org/10.5281/zenodo.23219063)
 
 Softmax sampling in a language model is exactly the Boltzmann distribution of statistical mechanics. This repository builds the rest of the thermodynamics on top of that identity and measures what it buys for hallucination detection.
 
@@ -127,6 +128,14 @@ python src/vocab_experiment.py --out data/vocab_exp.json --epochs 3 # trains 5 t
 ```
 
 The probe runs took about 30 minutes each on an Apple M4 in float32. Float32 is deliberate, because the method reads fine structure in the logits. The noise experiment reported in FINDINGS.md section 6 shows that the integral features tolerate logit noise of $5 \times 10^{-2}$.
+
+## Citing this work
+
+The paper and the code at tag `v1.0.0` are archived together on Zenodo. The paper is the measurement-note version and reports the failed sampling test in full.
+
+> Gaur, P. (2026). *The Melting Temperature of a Next-Token Distribution: a Closed Form, an Ordering Theorem, and a Failed Prediction* (Version 1). Zenodo. https://doi.org/10.5281/zenodo.23219064
+
+The DOI 10.5281/zenodo.23219063 always resolves to the newest version. GitHub's "Cite this repository" button reads the same details from `CITATION.cff`.
 
 ## Validation
 

@@ -4,10 +4,15 @@ title: "Token Thermodynamics: temperature spectroscopy of a language model's nex
 authors:
   - family-names: Gaur
     given-names: Pragyaan
+doi: "10.5281/zenodo.23219064"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23219063"
+    description: "Concept DOI, always the newest version on Zenodo"
 repository-code: "https://github.com/pragyaangaur/Token-Thermodynamics"
 license: MIT
 version: "1.0.0"
-date-released: "2026-10-06"
+date-released: "2026-10-07"
 keywords:
   - language models
   - sampling temperature
