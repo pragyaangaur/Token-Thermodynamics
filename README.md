@@ -106,6 +106,7 @@ src/experiment_a.py           samples at T_melt/1.141 against TURN, needs a GPU
 src/logit_offset.py           raw-logit uncertainty scores across model families
 notebooks/                    Kaggle notebook that runs experiment_a.py
 scripts/make_archive.sh       builds a release zip from git, for archiving
+lean/                         Lean 4 proofs of the exact results, see lean/README.md
 ```
 
 ## Regenerating from scratch
@@ -151,3 +152,5 @@ The implementation is checked against analytic results rather than only against 
 ```bash
 python src/validate.py
 ```
+
+The exact identities, the ordering theorem and the two-level peak equation are also proved in Lean 4 in [lean/](lean/README.md). `lake build TokenThermo` in that folder checks them.
