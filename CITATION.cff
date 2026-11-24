@@ -4,15 +4,15 @@ title: "Token Thermodynamics: temperature spectroscopy of a language model's nex
 authors:
   - family-names: Gaur
     given-names: Pragyaan
-doi: "10.5281/zenodo.23219064"
+doi: "10.5281/zenodo.24495644"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.23219063"
     description: "Concept DOI, always the newest version on Zenodo"
 repository-code: "https://github.com/pragyaangaur/Token-Thermodynamics"
 license: MIT
-version: "1.0.0"
-date-released: "2026-10-07"
+version: "2.0.0"
+date-released: "2026-11-24"
 keywords:
   - language models
   - sampling temperature
@@ -26,4 +26,4 @@ abstract: >-
   one forward pass, gives a closed form for the heat-capacity peak in terms of the logit
   gap and the vocabulary size, tests it across 12 models, and records eight falsified
   hypotheses alongside the results that survived. One of them is a pre-registered test in
-  which sampling at a temperature predicted from the melting temperature failed.
+  which sampling at a temperature predicted from the melting temperature failed. The exact identities, the ordering theorem and the two-level melting results are proved in Lean 4 with Physlib and Mathlib.

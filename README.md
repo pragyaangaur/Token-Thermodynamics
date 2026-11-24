@@ -132,9 +132,9 @@ The probe runs took about 30 minutes each on an Apple M4 in float32. Float32 is 
 
 ## Citing this work
 
-The paper and the code at tag `v1.0.0` are archived together on Zenodo. The paper is the measurement-note version and reports the failed sampling test in full.
+The paper and the code at tag `v2.0.0` are archived together on Zenodo. The paper is the measurement-note version and reports the failed sampling test in full.
 
-> Gaur, P. (2026). *The Melting Temperature of a Next-Token Distribution: a Closed Form, an Ordering Theorem, and a Failed Prediction* (Version 1). Zenodo. https://doi.org/10.5281/zenodo.23219064
+> Gaur, P. (2026). *The Melting Temperature of a Next-Token Distribution: a Closed Form, an Ordering Theorem, and a Failed Prediction* (Version 2). Zenodo. https://doi.org/10.5281/zenodo.24495644
 
 The DOI 10.5281/zenodo.23219063 always resolves to the newest version. GitHub's "Cite this repository" button reads the same details from `CITATION.cff`.
 
