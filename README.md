@@ -1,7 +1,7 @@
 # Temperature spectroscopy of a language model's next-token distribution
 
 [![reproduce](https://github.com/pragyaangaur/Token-Thermodynamics/actions/workflows/repro.yml/badge.svg)](https://github.com/pragyaangaur/Token-Thermodynamics/actions/workflows/repro.yml)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23219063.svg)](https://doi.org/10.5281/zenodo.23219063)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23219063-blue.svg)](https://doi.org/10.5281/zenodo.23219063)
 
 Softmax sampling in a language model is exactly the Boltzmann distribution of statistical mechanics. This repository builds the rest of the thermodynamics on top of that identity and measures what it buys for hallucination detection.
 
