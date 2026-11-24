@@ -216,6 +216,150 @@ theorem two_level_peak (hg : 1 ≤ g) :
         nlinarith
       exact hanti (Set.mem_Ici.mpr le_rfl) (Set.mem_Ici.mpr hgt.le) hgt
 
+section peakvalues
+
+variable (hg : 1 ≤ g) {xs : ℝ} (hxs : 0 < xs) (hH : H g xs = 0)
+include hg hxs hH
+
+/-- At the peak, `u = (x* - 2) / (x* + 2)`. -/
+lemma u_peak : u g xs = (xs - 2) / (xs + 2) := by
+  have hup := u_pos (by linarith : 0 < g) xs
+  unfold H at hH
+  have : 0 < xs + 2 := by linarith
+  rw [eq_div_iff this.ne']
+  nlinarith
+
+/-- **Peak occupancy** (validate.py section 2): the top token has probability `1/2 + 1/x*` at the
+melting temperature. -/
+theorem peakOccupancy : 1 / (1 + u g xs) = 1 / 2 + 1 / xs := by
+  have hup := u_pos (by linarith : 0 < g) xs
+  unfold H at hH
+  have hx2 : 2 < xs := by nlinarith
+  rw [u_peak hg hxs hH]
+  have : xs + 2 ≠ 0 := by linarith
+  field_simp
+  ring
+
+/-- **Peak height** (validate.py section 2): `C_max = (x*^2 - 4) / 4`. -/
+theorem peakHeight : cTwo g xs = (xs ^ 2 - 4) / 4 := by
+  have hx2 : 2 < xs := by
+    have hup := u_pos (by linarith : 0 < g) xs
+    unfold H at hH
+    nlinarith
+  unfold cTwo
+  rw [u_peak hg hxs hH]
+  have : xs + 2 ≠ 0 := by linarith
+  field_simp
+  ring
+
+omit hxs hH in
+/-- `u = exp (-c)` at the peak, where `c = x* - log g`. -/
+lemma u_peak_eq_exp : u g xs = exp (-(xs - log g)) := by
+  unfold u
+  rw [show -(xs - log g) = log g + -xs by ring, exp_add, exp_log (by linarith : 0 < g)]
+
+/-- With `t = exp c` the peak equation reads `x* (t - 1) = 2 (t + 1)`. -/
+lemma peak_exp_form : xs * (exp (xs - log g) - 1) = 2 * (exp (xs - log g) + 1) := by
+  have hq := u_peak_eq_exp hg (xs := xs)
+  have ht : exp (xs - log g) * exp (-(xs - log g)) = 1 := by rw [← exp_add]; simp
+  unfold H at hH
+  rw [hq] at hH
+  set t := exp (xs - log g)
+  set q := exp (-(xs - log g))
+  have h0 : xs * (1 - q) = 2 * (1 + q) := by linarith
+  have : xs * (1 - q) * t = 2 * (1 + q) * t := by rw [h0]
+  nlinarith
+
+/-- **Lower bound on the offset** (new): `c (log g + c) > 4`, that is `c x* > 4`. -/
+theorem c_lower : 4 < (xs - log g) * xs := by
+  have hlt := log_lt_of_root hg hxs hH
+  have hc : 0 < xs - log g := by linarith
+  have hte := peak_exp_form hg hxs hH
+  set t := exp (xs - log g) with ht
+  have ht1 : 1 < t := by
+    have := exp_lt_exp.mpr hc
+    rw [exp_zero] at this; exact this
+  have key := lt_log_one_add_of_pos (show 0 < t - 1 by linarith)
+  rw [show 1 + (t - 1) = t by ring, ht, log_exp] at key
+  rw [← ht] at key
+  have hxs2 : 2 * (t - 1) / (t - 1 + 2) = 4 / xs := by
+    rw [div_eq_div_iff (by linarith) hxs.ne']
+    nlinarith
+  rw [hxs2, div_lt_iff₀ hxs] at key
+  linarith
+
+/-- **Upper bound on the offset** (new): `c x* ≤ 2 c + 4`. -/
+theorem c_upper : (xs - log g) * xs ≤ 2 * (xs - log g) + 4 := by
+  have hlt := log_lt_of_root hg hxs hH
+  have hc : 0 < xs - log g := by linarith
+  have hte := peak_exp_form hg hxs hH
+  have h1 := add_one_le_exp (xs - log g)
+  set t := exp (xs - log g) with ht
+  have ht1 : 1 < t := by
+    have := exp_lt_exp.mpr hc
+    rw [exp_zero] at this; exact this
+  have h2 : xs = 2 * (t + 1) / (t - 1) := by
+    rw [eq_div_iff (by linarith)]; linarith
+  have : (xs - log g) * xs ≤ 2 * (xs - log g) + 4 := by
+    rw [h2, mul_div_assoc', div_le_iff₀ (by linarith)]
+    nlinarith
+  exact this
+
+/-- The offset is positive and bounded by `c^2 ≤ 2 c + 4` (new), so `c < 1 + √5` for every `g ≥ 1`. -/
+theorem c_pos_sq_le : 0 < xs - log g ∧ (xs - log g) ^ 2 ≤ 2 * (xs - log g) + 4 := by
+  have hlt := log_lt_of_root hg hxs hH
+  have hL : 0 ≤ log g := log_nonneg hg
+  have hc : 0 < xs - log g := by linarith
+  have := c_upper hg hxs hH
+  refine ⟨hc, ?_⟩
+  nlinarith
+
+end peakvalues
+
 end TwoLevel
+
+/-- The two-level energy vector: one ground state at `0` and `g` states at `Δ`. -/
+def twoLevelE (g : ℕ) (Δ : ℝ) : Fin (g + 1) → ℝ := Fin.cons 0 (fun _ => Δ)
+
+lemma Z_twoLevel (g : ℕ) (Δ T : ℝ) :
+    Z (twoLevelE g Δ) T = 1 + g * exp (-Δ / T) := by
+  simp [Z, twoLevelE, Fin.sum_univ_succ]
+
+/-- The general heat capacity `Var(E) / T^2` of the energy vector `twoLevelE g Δ` equals the
+closed form `x^2 u / (1 + u)^2` with `x = Δ / T` and `u = g e^{-x}`. -/
+theorem C_twoLevel (g : ℕ) (Δ : ℝ) {T : ℝ} (hT : T ≠ 0) :
+    C (twoLevelE g Δ) T = TwoLevel.cTwo (g : ℝ) (Δ / T) := by
+  have hZ := Z_twoLevel g Δ T
+  have hZp : (0 : ℝ) < 1 + g * exp (-Δ / T) := by positivity
+  have hneg : -(Δ / T) = -Δ / T := by ring
+  unfold C
+  rw [var_eq]
+  simp only [U, prob, hZ]
+  simp only [TwoLevel.cTwo, TwoLevel.u, hneg, twoLevelE, Fin.sum_univ_succ,
+    Fin.cons_zero, Fin.cons_succ, Finset.sum_const, Finset.card_univ, Fintype.card_fin,
+    nsmul_eq_mul]
+  field_simp
+  ring
+
+/-- **The melting temperature of the two-level model** (new). For `g ≥ 1` and `Δ > 0` there is an
+`x* > log g` with `x* = 2 (1 + u) / (1 - u)` such that `T_melt = Δ / x*` is the unique maximiser of
+the heat capacity of `twoLevelE g Δ` over all `T > 0`. -/
+theorem two_level_melting (g : ℕ) (hg : 1 ≤ g) {Δ : ℝ} (hΔ : 0 < Δ) :
+    ∃ xs : ℝ, 0 < xs ∧ Real.log g < xs ∧ 2 < xs ∧
+      xs = 2 * (1 + TwoLevel.u g xs) / (1 - TwoLevel.u g xs) ∧
+      ∀ T : ℝ, 0 < T → T ≠ Δ / xs →
+        C (twoLevelE g Δ) T < C (twoLevelE g Δ) (Δ / xs) := by
+  have hg' : (1 : ℝ) ≤ g := by exact_mod_cast hg
+  obtain ⟨xs, hxs, hlog, h2, -, heq, -, hmax⟩ := TwoLevel.two_level_peak hg'
+  refine ⟨xs, hxs, hlog, h2, heq, fun T hT hne => ?_⟩
+  have hTm : Δ / xs ≠ 0 := (div_pos hΔ hxs).ne'
+  rw [C_twoLevel g Δ hT.ne', C_twoLevel g Δ hTm]
+  have : Δ / (Δ / xs) = xs := by field_simp
+  rw [this]
+  apply hmax _ (div_pos hΔ hT)
+  intro h
+  apply hne
+  field_simp at h ⊢
+  linarith
 
 end TokenThermo
