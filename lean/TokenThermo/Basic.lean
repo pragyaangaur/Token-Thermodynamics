@@ -103,6 +103,13 @@ theorem S_eq (T : ℝ) : S E T = log (Z E T) + U E T / T := by
   simp_rw [this, Finset.sum_neg_distrib]
   ring
 
+/-- The free energy is `F = U - T S` for `T ≠ 0`. -/
+theorem F_eq_U_sub_TS (hT : T ≠ 0) : F E T = U E T - T * S E T := by
+  rw [S_eq]
+  unfold F
+  field_simp
+  ring
+
 /-- The variance is the mean square minus the square of the mean. -/
 lemma var_eq (T : ℝ) :
     var E T = ∑ i, prob E T i * E i ^ 2 - U E T ^ 2 := by
