@@ -175,7 +175,7 @@ lemma u_lt_one_of_root (hg : 1 ≤ g) {x : ℝ} (hx : 0 < x) (hH : H g x = 0) : 
 `x* = 2 (1 + u) / (1 - u)`, it exceeds `log g` and `2`, and `C` has a strict global maximum there
 as a function of `x`. -/
 theorem two_level_peak (hg : 1 ≤ g) :
-    ∃ xs : ℝ, 0 < xs ∧ log g < xs ∧ 2 < xs ∧ u g xs < 1 ∧
+    ∃ xs : ℝ, 0 < xs ∧ H g xs = 0 ∧ log g < xs ∧ 2 < xs ∧ u g xs < 1 ∧
       xs = 2 * (1 + u g xs) / (1 - u g xs) ∧
       (∀ y, 0 < y → H g y = 0 → y = xs) ∧
       (∀ x, 0 < x → x ≠ xs → cTwo g x < cTwo g xs) := by
@@ -184,7 +184,7 @@ theorem two_level_peak (hg : 1 ≤ g) :
   have hlt := log_lt_of_root hg hxs hH
   have hu1 := u_lt_one_of_root hg hxs hH
   have hup := u_pos hg0 xs
-  refine ⟨xs, hxs, hlt, ?_, hu1, ?_, fun y hy hHy => root_unique hg0 hy hxs hHy hH, ?_⟩
+  refine ⟨xs, hxs, hH, hlt, ?_, hu1, ?_, fun y hy hHy => root_unique hg0 hy hxs hHy hH, ?_⟩
   · unfold H at hH; nlinarith
   · unfold H at hH
     rw [eq_div_iff (by linarith)]
@@ -350,7 +350,7 @@ theorem two_level_melting (g : ℕ) (hg : 1 ≤ g) {Δ : ℝ} (hΔ : 0 < Δ) :
       ∀ T : ℝ, 0 < T → T ≠ Δ / xs →
         C (twoLevelE g Δ) T < C (twoLevelE g Δ) (Δ / xs) := by
   have hg' : (1 : ℝ) ≤ g := by exact_mod_cast hg
-  obtain ⟨xs, hxs, hlog, h2, -, heq, -, hmax⟩ := TwoLevel.two_level_peak hg'
+  obtain ⟨xs, hxs, -, hlog, h2, -, heq, -, hmax⟩ := TwoLevel.two_level_peak hg'
   refine ⟨xs, hxs, hlog, h2, heq, fun T hT hne => ?_⟩
   have hTm : Δ / xs ≠ 0 := (div_pos hΔ hxs).ne'
   rw [C_twoLevel g Δ hT.ne', C_twoLevel g Δ hTm]
