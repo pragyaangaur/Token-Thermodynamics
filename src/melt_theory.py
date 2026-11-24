@@ -19,7 +19,7 @@ for g in [10, 100, 1000, 10**4, 10**5, 151936, 10**6, 10**8]:
     x = xstar(g); lg = np.log(g)
     print(f"{g:14d} {x:8.4f} {lg:8.4f} {x-lg:15.4f} {lg/x:20.4f}")
 print()
-print("So T_melt = Delta / (log V + c), c drifts from ~1.7 at V=10 to ~0.3 at V=1e8.")
+print("So T_melt = Delta / (log V + c), c drifts from 1.27 at V=10 to 0.22 at V=1e8 (0.33 at V=151936).")
 print("For a 151936-token vocabulary: x* = %.3f, i.e. T_melt = Delta / %.3f" % (xstar(151936), xstar(151936)))
 print("A model melts at sampling temperature T once T * (log V + c) exceeds the")
 print("logit gap between the top token and the vocabulary bulk.")

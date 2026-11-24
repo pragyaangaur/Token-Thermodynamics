@@ -143,4 +143,36 @@ check(f"single-peak turning points not below T_melt, out of {single_peak}",
       single_peak - below_when_single, 0)
 
 
+print("\n== 5. bounds on the two-level peak that are proved in lean/ ==")
+# lean/TokenThermo/TwoLevel.lean proves, for every real g >= 1 and x* the root of
+# x (1 - u) = 2 (1 + u) with u = g exp(-x): x* > max(2, log g), the offset c = x* - log g
+# satisfies c x* > 4 and c x* <= 2 c + 4, and c^2 <= 2 c + 4. This samples the claims.
+gaps = {"x* > log g": 0.0, "x* > 2": 0.0, "c x* > 4": 0.0, "c x* <= 2c + 4": 0.0,
+        "c^2 <= 2c + 4": 0.0}
+for g in np.concatenate([[1.0, 1.5, 2.0, 3.0], np.logspace(1, 9, 120)]):
+    lg = np.log(g)
+    f = lambda x: x * (1 - g * np.exp(-x)) - 2 * (1 + g * np.exp(-x))
+    xs = brentq(f, max(lg, 1e-9) + 1e-9, lg + 5.0, xtol=1e-14)
+    c = xs - lg
+    gaps["x* > log g"] = max(gaps["x* > log g"], lg - xs)
+    gaps["x* > 2"] = max(gaps["x* > 2"], 2 - xs)
+    gaps["c x* > 4"] = max(gaps["c x* > 4"], 4 - c * xs)
+    gaps["c x* <= 2c + 4"] = max(gaps["c x* <= 2c + 4"], c * xs - 2 * c - 4)
+    gaps["c^2 <= 2c + 4"] = max(gaps["c^2 <= 2c + 4"], c * c - 2 * c - 4)
+for name, worst in gaps.items():
+    check(f"worst violation of {name}", worst, 0.0)
+
+# The peak is a strict global maximum: no temperature beats x* on a fine grid.
+worst_excess = 0.0
+for g in (1.0, 10.0, 1e3, 151936.0):
+    lg = np.log(g)
+    f = lambda x: x * (1 - g * np.exp(-x)) - 2 * (1 + g * np.exp(-x))
+    xs = brentq(f, max(lg, 1e-9) + 1e-9, lg + 5.0, xtol=1e-14)
+    xgrid = np.linspace(1e-3, xs + 30, 400001)
+    ug = g * np.exp(-xgrid)
+    cgrid = xgrid**2 * ug / (1 + ug) ** 2
+    cstar = (xs**2 - 4) / 4
+    worst_excess = max(worst_excess, float(np.max(cgrid - cstar)))
+check("max (C on grid) - C(x*) over four g", max(worst_excess, 0.0), 1e-9)
+
 print("\nAll validation checks passed.")
