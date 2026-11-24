@@ -305,6 +305,17 @@ theorem c_upper : (xs - log g) * xs ≤ 2 * (xs - log g) + 4 := by
     nlinarith
   exact this
 
+/-- **Two-sided bound on the peak height** (new). With `c = x* - log g`,
+`(log g)^2 / 4 + 1 - c^2 / 4 < C_max ≤ (log g)^2 / 4 + 1 - c^2 / 4 + c`. Since `c → 0` as `g → ∞`,
+`C_max = (log g)^2 / 4 + 1 + o(1)`, which is the form of the Reeb and Wolf bound on varentropy. -/
+theorem peakHeight_bounds :
+    (log g) ^ 2 / 4 + 1 - (xs - log g) ^ 2 / 4 < cTwo g xs ∧
+      cTwo g xs ≤ (log g) ^ 2 / 4 + 1 - (xs - log g) ^ 2 / 4 + (xs - log g) := by
+  rw [peakHeight hg hxs hH]
+  have h1 := c_lower hg hxs hH
+  have h2 := c_upper hg hxs hH
+  constructor <;> nlinarith
+
 /-- The offset is positive and bounded by `c^2 ≤ 2 c + 4` (new), so `c < 1 + √5` for every `g ≥ 1`. -/
 theorem c_pos_sq_le : 0 < xs - log g ∧ (xs - log g) ^ 2 ≤ 2 * (xs - log g) + 4 := by
   have hlt := log_lt_of_root hg hxs hH
