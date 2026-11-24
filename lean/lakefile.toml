@@ -1,0 +1,10 @@
+name = "TokenThermo"
+defaultTargets = ["TokenThermo"]
+
+[[require]]
+name = "physlib"
+git = "https://github.com/leanprover-community/physlib"
+rev = "master"
+
+[[lean_lib]]
+name = "TokenThermo"

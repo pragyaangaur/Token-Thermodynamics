@@ -33,3 +33,6 @@ paper/
 
 # Result archives downloaded from Kaggle, whatever they are named
 /*.zip
+
+# Lean build output
+lean/.lake/
